@@ -130,8 +130,22 @@ static NSString * const reuseFooterIdentifier = @"CollectionViewFooter";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary* dic = (NSDictionary*)((NSArray*)(self.dataArray[indexPath.section][@"children"])[indexPath.item]);
     if ([NSClassFromString(dic[@"key"]) isSubclassOfClass:[UIViewController class]]) {
-        UIViewController* vc = [[NSClassFromString(dic[@"key"]) alloc] init];
+        UIViewController* vc = nil;
+        if(!dic[@"type"]){
+            vc = [[NSClassFromString(dic[@"key"]) alloc] init];
+            
+        }else if ([@"nib" isEqualToString:dic[@"type"]]){
+            vc = [[NSClassFromString(dic[@"key"]) alloc] initWithNibName:dic[@"key"] bundle:nil];
+            
+        }
+        else if ([@"storyboard" isEqualToString:dic[@"type"]]){
+            vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:dic[@"key"]];
+            
+        }else{
+            vc = [[UIViewController alloc]init];
+        }
         [self showViewController:vc sender:self];
+        
     }
 }
 /*

@@ -12,8 +12,8 @@
     return @[
         @{@"key":@"objective-c-basic",@"title":@"Objective-C基础",@"children":@[
               @{@"key":@"ZHKeywordsViewController",@"title":@"关键字",@"icon":@"",@"authCode":@""},
-              @{@"key":@"key0-0",@"title":@"类和对象",@"icon":@"",@"authCode":@""},
-              @{@"key":@"key0-1",@"title":@"Block编程",@"icon":@"",@"authCode":@""},
+              @{@"key":@"ZHOOViewController",@"type":@"nib",@"title":@"类和对象",@"icon":@"",@"authCode":@""},
+              @{@"key":@"key0-1",@"type":@"storyboard",@"title":@"Block编程",@"icon":@"",@"authCode":@""},
               @{@"key":@"key0-2",@"title":@"Runtime",@"icon":@"",@"authCode":@""},
               @{@"key":@"key0-3",@"title":@"内存管理",@"icon":@"",@"authCode":@""},
               @{@"key":@"key0-4",@"title":@"Runloop",@"icon":@"",@"authCode":@""}

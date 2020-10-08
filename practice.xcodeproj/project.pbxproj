@@ -33,6 +33,12 @@
 		94DC9EFA251A25A300EB27A8 /* SyntaxCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DC9EF8251A25A300EB27A8 /* SyntaxCollectionViewCell.xib */; };
 		94DC9F00251A3F2300EB27A8 /* MyUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DC9EFF251A3F2300EB27A8 /* MyUITableViewController.m */; };
 		94DC9F06251A446300EB27A8 /* SyntaxCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DC9F05251A446300EB27A8 /* SyntaxCollectionViewController.m */; };
+		94FF6A9E252F29FB00BE99EB /* UIViewController+Normal.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FF6A9D252F29FB00BE99EB /* UIViewController+Normal.m */; };
+		94FF6AA4252F2A1F00BE99EB /* UIViewController+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FF6AA3252F2A1F00BE99EB /* UIViewController+Attributes.m */; };
+		94FF6AAB252F32F000BE99EB /* ZHOOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FF6AA9252F32F000BE99EB /* ZHOOViewController.m */; };
+		94FF6AAC252F32F000BE99EB /* ZHOOViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FF6AAA252F32F000BE99EB /* ZHOOViewController.xib */; };
+		94FF6AB2252F3F4400BE99EB /* UITextView+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FF6AB1252F3F4400BE99EB /* UITextView+Utils.m */; };
+		94FF6AB8252F423500BE99EB /* synTaxNotes.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 94FF6AB7252F423500BE99EB /* synTaxNotes.stringsdict */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +108,16 @@
 		94DC9EFF251A3F2300EB27A8 /* MyUITableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyUITableViewController.m; sourceTree = "<group>"; };
 		94DC9F04251A446300EB27A8 /* SyntaxCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyntaxCollectionViewController.h; sourceTree = "<group>"; };
 		94DC9F05251A446300EB27A8 /* SyntaxCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyntaxCollectionViewController.m; sourceTree = "<group>"; };
+		94FF6A9C252F29FB00BE99EB /* UIViewController+Normal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Normal.h"; sourceTree = "<group>"; };
+		94FF6A9D252F29FB00BE99EB /* UIViewController+Normal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Normal.m"; sourceTree = "<group>"; };
+		94FF6AA2252F2A1F00BE99EB /* UIViewController+Attributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Attributes.h"; sourceTree = "<group>"; };
+		94FF6AA3252F2A1F00BE99EB /* UIViewController+Attributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Attributes.m"; sourceTree = "<group>"; };
+		94FF6AA8252F32F000BE99EB /* ZHOOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHOOViewController.h; sourceTree = "<group>"; };
+		94FF6AA9252F32F000BE99EB /* ZHOOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHOOViewController.m; sourceTree = "<group>"; };
+		94FF6AAA252F32F000BE99EB /* ZHOOViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZHOOViewController.xib; sourceTree = "<group>"; };
+		94FF6AB0252F3F4400BE99EB /* UITextView+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+Utils.h"; sourceTree = "<group>"; };
+		94FF6AB1252F3F4400BE99EB /* UITextView+Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Utils.m"; sourceTree = "<group>"; };
+		94FF6AB7252F423500BE99EB /* synTaxNotes.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = synTaxNotes.stringsdict; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,14 +247,11 @@
 			children = (
 				94DC9ECB251A17AA00EB27A8 /* PageBViewController.h */,
 				94DC9ECC251A17AA00EB27A8 /* PageBViewController.m */,
-				94DC9EF0251A217E00EB27A8 /* SyntaxViewController.h */,
-				94DC9EF1251A217E00EB27A8 /* SyntaxViewController.m */,
+				94FF6A98252F288A00BE99EB /* Syntax */,
 				94DC9EFE251A3F2300EB27A8 /* MyUITableViewController.h */,
 				94DC9EFF251A3F2300EB27A8 /* MyUITableViewController.m */,
 				94DC9F04251A446300EB27A8 /* SyntaxCollectionViewController.h */,
 				94DC9F05251A446300EB27A8 /* SyntaxCollectionViewController.m */,
-				94045861252E00DA00266012 /* ZHKeywordsViewController.h */,
-				94045862252E00DA00266012 /* ZHKeywordsViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -302,6 +315,43 @@
 				94DC9EE5251A1D7400EB27A8 /* CommonModel.m */,
 			);
 			path = "base-class";
+			sourceTree = "<group>";
+		};
+		94FF6A97252F285300BE99EB /* category */ = {
+			isa = PBXGroup;
+			children = (
+				94FF6A9C252F29FB00BE99EB /* UIViewController+Normal.h */,
+				94FF6A9D252F29FB00BE99EB /* UIViewController+Normal.m */,
+				94FF6AA2252F2A1F00BE99EB /* UIViewController+Attributes.h */,
+				94FF6AA3252F2A1F00BE99EB /* UIViewController+Attributes.m */,
+				94FF6AB0252F3F4400BE99EB /* UITextView+Utils.h */,
+				94FF6AB1252F3F4400BE99EB /* UITextView+Utils.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		94FF6A98252F288A00BE99EB /* Syntax */ = {
+			isa = PBXGroup;
+			children = (
+				94FF6AB6252F41B100BE99EB /* files */,
+				94FF6A97252F285300BE99EB /* category */,
+				94DC9EF0251A217E00EB27A8 /* SyntaxViewController.h */,
+				94DC9EF1251A217E00EB27A8 /* SyntaxViewController.m */,
+				94045861252E00DA00266012 /* ZHKeywordsViewController.h */,
+				94045862252E00DA00266012 /* ZHKeywordsViewController.m */,
+				94FF6AA8252F32F000BE99EB /* ZHOOViewController.h */,
+				94FF6AA9252F32F000BE99EB /* ZHOOViewController.m */,
+				94FF6AAA252F32F000BE99EB /* ZHOOViewController.xib */,
+			);
+			path = Syntax;
+			sourceTree = "<group>";
+		};
+		94FF6AB6252F41B100BE99EB /* files */ = {
+			isa = PBXGroup;
+			children = (
+				94FF6AB7252F423500BE99EB /* synTaxNotes.stringsdict */,
+			);
+			path = files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +459,8 @@
 				9404585D252DCF1600266012 /* SyntaxCollectionReusableView.xib in Resources */,
 				949A66F6251B4FB500555574 /* 笔记.rtfd in Resources */,
 				94DC9E9A251A12F100EB27A8 /* LaunchScreen.storyboard in Resources */,
+				94FF6AB8252F423500BE99EB /* synTaxNotes.stringsdict in Resources */,
+				94FF6AAC252F32F000BE99EB /* ZHOOViewController.xib in Resources */,
 				94DC9E97251A12F100EB27A8 /* Assets.xcassets in Resources */,
 				94DC9E95251A12EF00EB27A8 /* Main.storyboard in Resources */,
 				94DC9EFA251A25A300EB27A8 /* SyntaxCollectionViewCell.xib in Resources */,
@@ -436,8 +488,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94FF6A9E252F29FB00BE99EB /* UIViewController+Normal.m in Sources */,
 				94045870252E04B800266012 /* ZHUIMaker.m in Sources */,
 				94DC9E8C251A12EF00EB27A8 /* AppDelegate.m in Sources */,
+				94FF6AB2252F3F4400BE99EB /* UITextView+Utils.m in Sources */,
 				94DC9EF9251A25A300EB27A8 /* SyntaxCollectionViewCell.m in Sources */,
 				94DC9ED7251A1D3300EB27A8 /* BaseViewController.m in Sources */,
 				94DC9E9D251A12F100EB27A8 /* main.m in Sources */,
@@ -451,9 +505,11 @@
 				94DC9E8F251A12EF00EB27A8 /* SceneDelegate.m in Sources */,
 				94DC9EE6251A1D7400EB27A8 /* CommonModel.m in Sources */,
 				94DC9F00251A3F2300EB27A8 /* MyUITableViewController.m in Sources */,
+				94FF6AAB252F32F000BE99EB /* ZHOOViewController.m in Sources */,
 				94DC9EF2251A217E00EB27A8 /* SyntaxViewController.m in Sources */,
 				94045863252E00DA00266012 /* ZHKeywordsViewController.m in Sources */,
 				94DC9EE0251A1D5A00EB27A8 /* BaseView.m in Sources */,
+				94FF6AA4252F2A1F00BE99EB /* UIViewController+Attributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

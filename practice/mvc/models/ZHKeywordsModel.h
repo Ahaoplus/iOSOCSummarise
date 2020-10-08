@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZHKeywordsModel : BaseModel
+
 @property(nonatomic,copy)NSString* strCopy;
 @property(nonatomic,strong,nullable)NSMutableString* strStrong;
 @property(nonatomic,assign)NSString* strAssgin;
