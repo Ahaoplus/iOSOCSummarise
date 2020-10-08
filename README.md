@@ -6,5 +6,6 @@
  ![image](https://github.com/Ahaoplus/iOSOCSummarise/blob/master/Snapshots/tabbar0.png)
  
    1.1、关键字：strong、weak、assign、copy
+   
    ![image](https://github.com/Ahaoplus/iOSOCSummarise/blob/master/Snapshots/oc-keywords.png)
    
