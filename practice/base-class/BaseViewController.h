@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BaseViewController : UIViewController
-
+@property(nonatomic,strong)NSString* knowledgePoints;// 知识点
 @end
 
 NS_ASSUME_NONNULL_END

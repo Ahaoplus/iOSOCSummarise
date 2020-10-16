@@ -47,9 +47,34 @@ static NSString * const contentStr = @"1、@property 语法糖，自动实现get
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"类和对象";
-    [self.textView utils_setText:contentStr lineSpacing:5.f];
+    self.knowledgePoints = contentStr;
+    
+    [self addObserver:self forKeyPath:@"pageDescription" options:NSKeyValueObservingOptionNew context:nil];
 }
-
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"pageDescription"]) {
+        [self.textView utils_setText:self.pageDescription lineSpacing:5.f];
+    }
+}
+- (IBAction)action1:(id)sender {
+    self.pageDescription = nil;
+    self.pageDescription = @"button1点击了";
+}
+- (IBAction)action2:(id)sender {
+    self.pageDescription = nil;
+    self.pageDescription = @"button2点击了";
+}
+- (IBAction)action3:(id)sender {
+    self.pageDescription = nil;
+    self.pageDescription = @"button3点击了";
+}
+- (IBAction)action4:(id)sender {
+    self.pageDescription = nil;
+    self.pageDescription = @"button4点击了";
+}
+-(void)dealloc{
+    [self removeObserver:self forKeyPath:@"pageDescription" context:nil];
+}
 /*
 #pragma mark - Navigation
 

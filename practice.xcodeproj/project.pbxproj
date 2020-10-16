@@ -39,6 +39,7 @@
 		94FF6AAC252F32F000BE99EB /* ZHOOViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FF6AAA252F32F000BE99EB /* ZHOOViewController.xib */; };
 		94FF6AB2252F3F4400BE99EB /* UITextView+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FF6AB1252F3F4400BE99EB /* UITextView+Utils.m */; };
 		94FF6AB8252F423500BE99EB /* synTaxNotes.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 94FF6AB7252F423500BE99EB /* synTaxNotes.stringsdict */; };
+		94FF6ABE252F549100BE99EB /* UIViewController+Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FF6ABD252F549100BE99EB /* UIViewController+Tracking.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,8 @@
 		94FF6AB0252F3F4400BE99EB /* UITextView+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+Utils.h"; sourceTree = "<group>"; };
 		94FF6AB1252F3F4400BE99EB /* UITextView+Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Utils.m"; sourceTree = "<group>"; };
 		94FF6AB7252F423500BE99EB /* synTaxNotes.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = synTaxNotes.stringsdict; sourceTree = "<group>"; };
+		94FF6ABC252F549100BE99EB /* UIViewController+Tracking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Tracking.h"; sourceTree = "<group>"; };
+		94FF6ABD252F549100BE99EB /* UIViewController+Tracking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Tracking.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +329,8 @@
 				94FF6AA3252F2A1F00BE99EB /* UIViewController+Attributes.m */,
 				94FF6AB0252F3F4400BE99EB /* UITextView+Utils.h */,
 				94FF6AB1252F3F4400BE99EB /* UITextView+Utils.m */,
+				94FF6ABC252F549100BE99EB /* UIViewController+Tracking.h */,
+				94FF6ABD252F549100BE99EB /* UIViewController+Tracking.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				949A66F1251B4F7F00555574 /* BaseModel.m in Sources */,
 				94DC9E8F251A12EF00EB27A8 /* SceneDelegate.m in Sources */,
 				94DC9EE6251A1D7400EB27A8 /* CommonModel.m in Sources */,
+				94FF6ABE252F549100BE99EB /* UIViewController+Tracking.m in Sources */,
 				94DC9F00251A3F2300EB27A8 /* MyUITableViewController.m in Sources */,
 				94FF6AAB252F32F000BE99EB /* ZHOOViewController.m in Sources */,
 				94DC9EF2251A217E00EB27A8 /* SyntaxViewController.m in Sources */,

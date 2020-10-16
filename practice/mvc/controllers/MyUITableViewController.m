@@ -12,6 +12,9 @@
 @end
 
 @implementation MyUITableViewController
+-(instancetype)init{
+    return [super init];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
