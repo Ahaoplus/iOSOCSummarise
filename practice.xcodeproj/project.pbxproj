@@ -13,6 +13,8 @@
 		94045863252E00DA00266012 /* ZHKeywordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94045862252E00DA00266012 /* ZHKeywordsViewController.m */; };
 		94045869252E035600266012 /* ZHKeywordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94045868252E035600266012 /* ZHKeywordsModel.m */; };
 		94045870252E04B800266012 /* ZHUIMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9404586F252E04B800266012 /* ZHUIMaker.m */; };
+		9485753D253E90DA0043ECD5 /* ZHGDCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9485753B253E90DA0043ECD5 /* ZHGDCViewController.m */; };
+		9485753E253E90DA0043ECD5 /* ZHGDCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9485753C253E90DA0043ECD5 /* ZHGDCViewController.xib */; };
 		949A66F1251B4F7F00555574 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 949A66F0251B4F7F00555574 /* BaseModel.m */; };
 		949A66F6251B4FB500555574 /* 笔记.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 949A66F5251B4FB500555574 /* 笔记.rtfd */; };
 		94DC9E8C251A12EF00EB27A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DC9E8B251A12EF00EB27A8 /* AppDelegate.m */; };
@@ -71,6 +73,9 @@
 		94045868252E035600266012 /* ZHKeywordsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHKeywordsModel.m; sourceTree = "<group>"; };
 		9404586E252E04B800266012 /* ZHUIMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHUIMaker.h; sourceTree = "<group>"; };
 		9404586F252E04B800266012 /* ZHUIMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHUIMaker.m; sourceTree = "<group>"; };
+		9485753A253E90DA0043ECD5 /* ZHGDCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHGDCViewController.h; sourceTree = "<group>"; };
+		9485753B253E90DA0043ECD5 /* ZHGDCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHGDCViewController.m; sourceTree = "<group>"; };
+		9485753C253E90DA0043ECD5 /* ZHGDCViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZHGDCViewController.xib; sourceTree = "<group>"; };
 		949A66EF251B4F7F00555574 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		949A66F0251B4F7F00555574 /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		949A66F5251B4FB500555574 /* 笔记.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "笔记.rtfd"; sourceTree = "<group>"; };
@@ -347,6 +352,9 @@
 				94FF6AA8252F32F000BE99EB /* ZHOOViewController.h */,
 				94FF6AA9252F32F000BE99EB /* ZHOOViewController.m */,
 				94FF6AAA252F32F000BE99EB /* ZHOOViewController.xib */,
+				9485753A253E90DA0043ECD5 /* ZHGDCViewController.h */,
+				9485753B253E90DA0043ECD5 /* ZHGDCViewController.m */,
+				9485753C253E90DA0043ECD5 /* ZHGDCViewController.xib */,
 			);
 			path = Syntax;
 			sourceTree = "<group>";
@@ -468,6 +476,7 @@
 				94FF6AAC252F32F000BE99EB /* ZHOOViewController.xib in Resources */,
 				94DC9E97251A12F100EB27A8 /* Assets.xcassets in Resources */,
 				94DC9E95251A12EF00EB27A8 /* Main.storyboard in Resources */,
+				9485753E253E90DA0043ECD5 /* ZHGDCViewController.xib in Resources */,
 				94DC9EFA251A25A300EB27A8 /* SyntaxCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,6 +517,7 @@
 				94DC9F06251A446300EB27A8 /* SyntaxCollectionViewController.m in Sources */,
 				949A66F1251B4F7F00555574 /* BaseModel.m in Sources */,
 				94DC9E8F251A12EF00EB27A8 /* SceneDelegate.m in Sources */,
+				9485753D253E90DA0043ECD5 /* ZHGDCViewController.m in Sources */,
 				94DC9EE6251A1D7400EB27A8 /* CommonModel.m in Sources */,
 				94FF6ABE252F549100BE99EB /* UIViewController+Tracking.m in Sources */,
 				94DC9F00251A3F2300EB27A8 /* MyUITableViewController.m in Sources */,

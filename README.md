@@ -8,4 +8,6 @@
    1.1、关键字：strong、weak、assign、copy
    
    ![image](https://github.com/Ahaoplus/iOSOCSummarise/blob/master/Snapshots/oc-keywords.png)
+
+   1.2 GDC
    
