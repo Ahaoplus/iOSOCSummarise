@@ -8,5 +8,15 @@
 #import "BaseModel.h"
 
 @implementation BaseModel
-
++(void)initialize
+{
+//    if(self == [BaseModel class])
+//    {
+        NSLog(@"%s",__FUNCTION__);
+//    }
+}
++(void)load
+{
+    NSLog(@"%s",__FUNCTION__);
+}
 @end

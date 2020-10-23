@@ -16,9 +16,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self testMainqueue];
-    [self barrier];
+//    [self barrier];
 //    [self testSerialSync];
 //    [self testSerialAsync];
+    [self testGlobalQueue];
     
     //并发队列中执行异步任务
 //    [self testConcurrentAsync];
@@ -202,6 +203,24 @@
 -(void)testGlobalQueue{
     // 全局并发队列的获取方法
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    const int fullTimeSalary = 1000;
+    const int partTimeSalary = 501;
+    __block int balance = 0;
+    //两个for循环会出现竞争关系
+    dispatch_async(queue, ^{
+        for (int i=0; i<10; i++) {
+            balance += fullTimeSalary;
+            NSLog(@"AAAA---balance : %d",balance);
+        }
+    });
+    //
+    for (int i=0; i<10; i++) {
+        balance += partTimeSalary;
+        NSLog(@"BBBBB-balance : %d",balance);
+    }
+    
+    
+    
 }
 
 

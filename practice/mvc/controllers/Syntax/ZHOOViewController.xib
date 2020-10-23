@@ -43,16 +43,16 @@
                         <action selector="action2:" destination="-1" eventType="touchUpInside" id="TZ4-Bt-Xqp"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DT3-3Y-fBp">
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DT3-3Y-fBp">
                     <rect key="frame" x="177" y="723" width="40" height="30"/>
-                    <state key="normal" title="按钮2"/>
+                    <state key="normal" title="按钮3"/>
                     <connections>
                         <action selector="action3:" destination="-1" eventType="touchUpInside" id="ES8-hX-Ig6"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMR-QQ-DRD">
-                    <rect key="frame" x="252" y="723" width="78" height="30"/>
-                    <state key="normal" title="按钮2"/>
+                    <rect key="frame" x="289" y="723" width="41" height="30"/>
+                    <state key="normal" title="按钮4"/>
                     <connections>
                         <action selector="action4:" destination="-1" eventType="touchUpInside" id="qhh-so-tsx"/>
                     </connections>
@@ -61,8 +61,8 @@
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="uMR-QQ-DRD" firstAttribute="leading" secondItem="DT3-3Y-fBp" secondAttribute="trailing" constant="35" id="2zb-5e-C3d"/>
-                <constraint firstItem="DT3-3Y-fBp" firstAttribute="leading" secondItem="Jav-h7-kHW" secondAttribute="trailing" constant="38" id="3rJ-Yi-tee"/>
+                <constraint firstItem="uMR-QQ-DRD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DT3-3Y-fBp" secondAttribute="trailing" constant="10" id="2zb-5e-C3d"/>
+                <constraint firstItem="DT3-3Y-fBp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jav-h7-kHW" secondAttribute="trailing" constant="10" id="3rJ-Yi-tee"/>
                 <constraint firstItem="fti-nh-kW6" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="6KP-Tf-FtI"/>
                 <constraint firstItem="JQV-oK-wv9" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="40" id="KOn-ZT-1eL"/>
                 <constraint firstItem="JQV-oK-wv9" firstAttribute="baseline" secondItem="uMR-QQ-DRD" secondAttribute="baseline" id="NHX-qk-zCr"/>

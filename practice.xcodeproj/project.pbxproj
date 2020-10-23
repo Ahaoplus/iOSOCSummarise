@@ -13,6 +13,7 @@
 		94045863252E00DA00266012 /* ZHKeywordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94045862252E00DA00266012 /* ZHKeywordsViewController.m */; };
 		94045869252E035600266012 /* ZHKeywordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94045868252E035600266012 /* ZHKeywordsModel.m */; };
 		94045870252E04B800266012 /* ZHUIMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9404586F252E04B800266012 /* ZHUIMaker.m */; };
+		9425779B25408E02009F2DD4 /* BaseModel+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 9425779A25408E02009F2DD4 /* BaseModel+Test.m */; };
 		9485753D253E90DA0043ECD5 /* ZHGDCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9485753B253E90DA0043ECD5 /* ZHGDCViewController.m */; };
 		9485753E253E90DA0043ECD5 /* ZHGDCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9485753C253E90DA0043ECD5 /* ZHGDCViewController.xib */; };
 		949A66F1251B4F7F00555574 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 949A66F0251B4F7F00555574 /* BaseModel.m */; };
@@ -44,6 +45,42 @@
 		94FF6ABE252F549100BE99EB /* UIViewController+Tracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FF6ABD252F549100BE99EB /* UIViewController+Tracking.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		94A995A625432899009171F2 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+		94A995A72543289A009171F2 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+		94A995A82543289C009171F2 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		94DC9EA3251A12F200EB27A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -73,6 +110,8 @@
 		94045868252E035600266012 /* ZHKeywordsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHKeywordsModel.m; sourceTree = "<group>"; };
 		9404586E252E04B800266012 /* ZHUIMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHUIMaker.h; sourceTree = "<group>"; };
 		9404586F252E04B800266012 /* ZHUIMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHUIMaker.m; sourceTree = "<group>"; };
+		9425779925408E02009F2DD4 /* BaseModel+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseModel+Test.h"; sourceTree = "<group>"; };
+		9425779A25408E02009F2DD4 /* BaseModel+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BaseModel+Test.m"; sourceTree = "<group>"; };
 		9485753A253E90DA0043ECD5 /* ZHGDCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHGDCViewController.h; sourceTree = "<group>"; };
 		9485753B253E90DA0043ECD5 /* ZHGDCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHGDCViewController.m; sourceTree = "<group>"; };
 		9485753C253E90DA0043ECD5 /* ZHGDCViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZHGDCViewController.xib; sourceTree = "<group>"; };
@@ -162,6 +201,13 @@
 			path = tools;
 			sourceTree = "<group>";
 		};
+		94857542253EED550043ECD5 /* lib-source-codes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "lib-source-codes";
+			sourceTree = "<group>";
+		};
 		94DC9E7E251A12EF00EB27A8 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +231,7 @@
 		94DC9E89251A12EF00EB27A8 /* practice */ = {
 			isa = PBXGroup;
 			children = (
+				94857542253EED550043ECD5 /* lib-source-codes */,
 				9404586D252E049600266012 /* tools */,
 				94DC9ED4251A1D1C00EB27A8 /* base-class */,
 				94DC9EC4251A140200EB27A8 /* mvp */,
@@ -287,6 +334,8 @@
 				94045854252DB31F00266012 /* SyntaxModel.m */,
 				94045867252E035600266012 /* ZHKeywordsModel.h */,
 				94045868252E035600266012 /* ZHKeywordsModel.m */,
+				9425779925408E02009F2DD4 /* BaseModel+Test.h */,
+				9425779A25408E02009F2DD4 /* BaseModel+Test.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -379,6 +428,9 @@
 				94DC9E85251A12EF00EB27A8 /* Resources */,
 			);
 			buildRules = (
+				94A995A82543289C009171F2 /* PBXBuildRule */,
+				94A995A72543289A009171F2 /* PBXBuildRule */,
+				94A995A625432899009171F2 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -503,6 +555,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FF6A9E252F29FB00BE99EB /* UIViewController+Normal.m in Sources */,
+				9425779B25408E02009F2DD4 /* BaseModel+Test.m in Sources */,
 				94045870252E04B800266012 /* ZHUIMaker.m in Sources */,
 				94DC9E8C251A12EF00EB27A8 /* AppDelegate.m in Sources */,
 				94FF6AB2252F3F4400BE99EB /* UITextView+Utils.m in Sources */,
@@ -580,6 +633,122 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		94A995A22543285D009171F2 /* PreRlease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PRERELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = PreRlease;
+		};
+		94A995A32543285D009171F2 /* PreRlease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CustomProductName = "AhaoLX-Sit";
+				DEVELOPMENT_TEAM = CWY6VY3U8W;
+				INFOPLIST_FILE = practice/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahao.cn.practice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = PreRlease;
+		};
+		94A995A42543285D009171F2 /* PreRlease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CWY6VY3U8W;
+				INFOPLIST_FILE = practiceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahao.cn.practiceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/practice.app/practice";
+			};
+			name = PreRlease;
+		};
+		94A995A52543285D009171F2 /* PreRlease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CWY6VY3U8W;
+				INFOPLIST_FILE = practiceUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahao.cn.practiceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = practice;
+			};
+			name = PreRlease;
+		};
 		94DC9EB4251A12F200EB27A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -698,6 +867,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CustomProductName = "AhaoLX-Dev";
 				DEVELOPMENT_TEAM = CWY6VY3U8W;
 				INFOPLIST_FILE = practice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -716,6 +886,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CustomProductName = "AhaoLX-Prd";
 				DEVELOPMENT_TEAM = CWY6VY3U8W;
 				INFOPLIST_FILE = practice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -811,37 +982,41 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94DC9EB4251A12F200EB27A8 /* Debug */,
+				94A995A22543285D009171F2 /* PreRlease */,
 				94DC9EB5251A12F200EB27A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		94DC9EB6251A12F200EB27A8 /* Build configuration list for PBXNativeTarget "practice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94DC9EB7251A12F200EB27A8 /* Debug */,
+				94A995A32543285D009171F2 /* PreRlease */,
 				94DC9EB8251A12F200EB27A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		94DC9EB9251A12F200EB27A8 /* Build configuration list for PBXNativeTarget "practiceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94DC9EBA251A12F200EB27A8 /* Debug */,
+				94A995A42543285D009171F2 /* PreRlease */,
 				94DC9EBB251A12F200EB27A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		94DC9EBC251A12F200EB27A8 /* Build configuration list for PBXNativeTarget "practiceUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94DC9EBD251A12F200EB27A8 /* Debug */,
+				94A995A52543285D009171F2 /* PreRlease */,
 				94DC9EBE251A12F200EB27A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
