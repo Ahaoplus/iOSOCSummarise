@@ -17,5 +17,7 @@
 {
     NSLog(@"%s",__FUNCTION__);
 }
-
+-(void)test{
+    NSLog(@"%s",__FUNCTION__);
+}
 @end

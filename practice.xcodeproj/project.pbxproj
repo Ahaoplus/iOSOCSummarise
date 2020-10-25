@@ -18,6 +18,7 @@
 		9485753E253E90DA0043ECD5 /* ZHGDCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9485753C253E90DA0043ECD5 /* ZHGDCViewController.xib */; };
 		949A66F1251B4F7F00555574 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 949A66F0251B4F7F00555574 /* BaseModel.m */; };
 		949A66F6251B4FB500555574 /* 笔记.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 949A66F5251B4FB500555574 /* 笔记.rtfd */; };
+		94CD1466254565DC00D37F39 /* BaseModel+Practise.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CD1465254565DC00D37F39 /* BaseModel+Practise.m */; };
 		94DC9E8C251A12EF00EB27A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DC9E8B251A12EF00EB27A8 /* AppDelegate.m */; };
 		94DC9E8F251A12EF00EB27A8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DC9E8E251A12EF00EB27A8 /* SceneDelegate.m */; };
 		94DC9E95251A12EF00EB27A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DC9E93251A12EF00EB27A8 /* Main.storyboard */; };
@@ -118,6 +119,9 @@
 		949A66EF251B4F7F00555574 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		949A66F0251B4F7F00555574 /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		949A66F5251B4FB500555574 /* 笔记.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "笔记.rtfd"; sourceTree = "<group>"; };
+		94A995C52543382D009171F2 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = "../../../../../../Library/Autosave Information/MyPlayground.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		94CD1464254565DC00D37F39 /* BaseModel+Practise.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseModel+Practise.h"; sourceTree = "<group>"; };
+		94CD1465254565DC00D37F39 /* BaseModel+Practise.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BaseModel+Practise.m"; sourceTree = "<group>"; };
 		94DC9E87251A12EF00EB27A8 /* practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94DC9E8A251A12EF00EB27A8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		94DC9E8B251A12EF00EB27A8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -208,6 +212,25 @@
 			path = "lib-source-codes";
 			sourceTree = "<group>";
 		};
+		94A995C4254337FF009171F2 /* playground */ = {
+			isa = PBXGroup;
+			children = (
+				94A995C52543382D009171F2 /* MyPlayground.playground */,
+			);
+			path = playground;
+			sourceTree = "<group>";
+		};
+		94CD1460254564CB00D37F39 /* Categorys */ = {
+			isa = PBXGroup;
+			children = (
+				9425779925408E02009F2DD4 /* BaseModel+Test.h */,
+				9425779A25408E02009F2DD4 /* BaseModel+Test.m */,
+				94CD1464254565DC00D37F39 /* BaseModel+Practise.h */,
+				94CD1465254565DC00D37F39 /* BaseModel+Practise.m */,
+			);
+			path = Categorys;
+			sourceTree = "<group>";
+		};
 		94DC9E7E251A12EF00EB27A8 = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +254,7 @@
 		94DC9E89251A12EF00EB27A8 /* practice */ = {
 			isa = PBXGroup;
 			children = (
+				94A995C4254337FF009171F2 /* playground */,
 				94857542253EED550043ECD5 /* lib-source-codes */,
 				9404586D252E049600266012 /* tools */,
 				94DC9ED4251A1D1C00EB27A8 /* base-class */,
@@ -334,8 +358,7 @@
 				94045854252DB31F00266012 /* SyntaxModel.m */,
 				94045867252E035600266012 /* ZHKeywordsModel.h */,
 				94045868252E035600266012 /* ZHKeywordsModel.m */,
-				9425779925408E02009F2DD4 /* BaseModel+Test.h */,
-				9425779A25408E02009F2DD4 /* BaseModel+Test.m */,
+				94CD1460254564CB00D37F39 /* Categorys */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -555,6 +578,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FF6A9E252F29FB00BE99EB /* UIViewController+Normal.m in Sources */,
+				94CD1466254565DC00D37F39 /* BaseModel+Practise.m in Sources */,
 				9425779B25408E02009F2DD4 /* BaseModel+Test.m in Sources */,
 				94045870252E04B800266012 /* ZHUIMaker.m in Sources */,
 				94DC9E8C251A12EF00EB27A8 /* AppDelegate.m in Sources */,

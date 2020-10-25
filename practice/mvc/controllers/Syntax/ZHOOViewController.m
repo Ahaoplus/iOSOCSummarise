@@ -1,4 +1,10 @@
-//
+/*
+ KVO
+ copy深拷贝浅拷贝
+ KVC使用 setValue:forKey:  int这类类型传NSNumber 依此类推  setValue:forKeyPath:@"cat.weight" ,复杂状况的
+
+ 
+ */
 //  ZHOOViewController.m
 //  practice
 //
@@ -18,6 +24,7 @@
 
 
  */
+#import <objc/runtime.h>
 #import "ZHOOViewController.h"
 #import "UITextView+Utils.h"
 #ifdef DEBUG
@@ -45,6 +52,12 @@ static NSString * const contentStr = @"1、@property 语法糖，自动实现get
  Category像这样直接给类加属性是不行的，使用的时候会崩溃。需要使用runtime方法添加详情参见UIViewcontroller+Attributes类
  这样编译期就会报错：@synthesize not allowed in a category's implementation
  */
+{
+    NSString* name;
+    NSString* _name;
+    NSString* isName;
+    NSString* _isName;
+}
 @property(readwrite)NSString* pageDescription;
 @end
 
@@ -53,9 +66,53 @@ static NSString * const contentStr = @"1、@property 语法糖，自动实现get
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"类和对象";
+    self->_isName = @"self->_isName";
+    self->_name=@"self->_name";
+    self->name=@"self->name";
+    self->isName = @"self->isName";
     self.knowledgePoints = contentStr;
     
+    // KVO监听之后isa的指向会变成NSKVONotifying_XXXClass(Runtime动态创建的)
+    // p (IMP)0xddddd04383509 打印出方法实现  willChangeValueforKey didChangeValueForKey
     [self addObserver:self forKeyPath:@"pageDescription" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self printAllMethodOfClass:[self class]];
+    
+    /*NSKVONotifying_ZHOOViewController 动态生成的类继承自 ZHOOViewController
+     -------------------------------------------
+     2020-10-25 13:41:29.762412+0800 practice[89683:445440]  NSKVONotifying_ZHOOViewController setPageDescription:
+     2020-10-25 13:41:29.762858+0800 practice[89683:445440]  NSKVONotifying_ZHOOViewController class
+     2020-10-25 13:41:29.763258+0800 practice[89683:445440]  NSKVONotifying_ZHOOViewController dealloc
+     2020-10-25 13:41:29.763607+0800 practice[89683:445440]  NSKVONotifying_ZHOOViewController _isKVOA
+      -------------------------------------------
+     iOS用什么方式实现对一个对象的KVO「本质」
+         1、利用Runtime动态实现一个子类，并且让instance对象的isa指向这个全新的子类（这样它在寻找自己的方法的时候就会从全新的isa中寻找）
+         2、当修改instance对象的属性的时候会调用Foundation的_NSSetXXXValueAndNotify函数,调用细节如下：
+         willChangeValueForKey:
+         父类原来的setter
+         didChangeValueForKey:
+         内部会触发监听器（Observe的监听方法）observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:
+     -------------------------------------------
+     直接修改成员变量 会出发KVO吗？
+        就算value没有改变也可以通过willChangeValueForKey: & didChangeValueForKey方法  ，直接修改成员变量 xxx -> ooo  不会出发KVO，因为KVO本质是在set方法中的一些处理，成员变量不会自动生成set方法
+     -------------------------------------------
+     使用KVC会触发KVO吗？
+        
+     -------------------------------------------
+     */
+    [self printAllMethodOfClass:object_getClass(self)];
+}
+
+-(void)printAllMethodOfClass:(Class)clazz{
+    unsigned int count;
+    Method *methodList = class_copyMethodList(clazz, &count);
+    for (int i=0; i<count; i++) {
+        Method method = methodList[i];
+        NSString* methodName = NSStringFromSelector(method_getName(method));
+        NSLog(@" %@ %@ \n",clazz,methodName);
+    }
+    NSLog(@"-------------------------------------------");
+    free(methodList);
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"pageDescription"]) {
@@ -130,7 +187,20 @@ static NSString * const contentStr = @"1、@property 语法糖，自动实现get
 }
 - (IBAction)action4:(id)sender {
     self.pageDescription = nil;
-    self.pageDescription = environmentName;
+    /*
+     -------------------------------------------
+     使用KVC会触发KVO吗？
+        会的
+        KVC 会根据path中的参数去调用其对应的set方法：这里有一个细节 它首先需要判断accessInstanceVariablesDirectly返回值 如果为YES它就会直接去访问成员变量 _key _isKey key isKey这种变体的顺序去查找
+     如果key没有对应的成员变量或者值则抛出异常
+     -------------------------------------------
+     */
+    [self setValue:environmentName forKey:@"pageDescription"];
+    /*
+     getKey key _key isKey
+     */
+    
+    self.pageDescription = [NSString stringWithFormat:@"[self setValue:environmentName forKey:]触发了KVO %@",[self valueForKey:@"name"]];
 }
 -(void)dealloc{
     [self removeObserver:self forKeyPath:@"pageDescription" context:nil];

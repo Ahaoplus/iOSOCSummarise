@@ -7,9 +7,10 @@
 
 #import "SyntaxViewController.h"
 #import "SyntaxCollectionViewCell.h"
+#import "BaseModel+Test.h"
 static const NSString* CellIdentifier = @"SyntaxCollectionViewCell";
 @interface SyntaxViewController ()<UICollectionViewDataSource>
-
+@property(nonatomic,copy)BaseModel* model;
 @end
 
 @implementation SyntaxViewController
@@ -18,6 +19,13 @@ static const NSString* CellIdentifier = @"SyntaxCollectionViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.syntaxCollectionView reloadData];
+    /*
+     2020-10-25 20:17:04.658480+0800 practice[25405:696317] +[BaseModel load]
+     2020-10-25 20:17:04.659588+0800 practice[25405:696317] +[ZHKeywordsModel load]
+     2020-10-25 20:17:04.659765+0800 practice[25405:696317] +[BaseModel(Test) load]
+     */
+    self.model = [[BaseModel alloc]init];
+    [self.model test];
 //    [self.syntaxCollectionView registerNib:[UINib nibWithNibName:@"SyntaxCollectionViewCell" bundle:[NSBundle bundleWithIdentifier:@"SyntaxCollectionViewCell"]] forCellWithReuseIdentifier:@"SyntaxCollectionViewCell"];
 }
 
