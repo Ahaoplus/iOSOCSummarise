@@ -10,8 +10,25 @@
  * runtime的时候会合并分类和本类的各个数组，后面参与编译的方法会被放在最前面，
  */
 #import "BaseModel+Practise.h"
-
+#import <objc/runtime.h>
 @implementation BaseModel (Practise)
+
+static const char ZHExerciseNameKey = '\0';
+- (void)setExerciseName:(NSString *)exerciseName
+{
+    NSLog(@"%p",&ZHExerciseNameKey);
+    if (exerciseName != self.exerciseName) {
+        // 存储新的
+        objc_setAssociatedObject(self, &ZHExerciseNameKey,
+                                 exerciseName, OBJC_ASSOCIATION_RETAIN);
+    }
+}
+
+- (NSString *)exerciseName
+{
+    return objc_getAssociatedObject(self, &ZHExerciseNameKey);
+}
+
 -(void)exercise{
     NSLog(@"%s",__FUNCTION__);
 }

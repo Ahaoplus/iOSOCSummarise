@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong,nullable)NSMutableString* strStrong;
 @property(nonatomic,assign)NSString* strAssgin;
 @property(nonatomic,weak)NSString* strWeak;
+-(void)print;
 
 @end
 

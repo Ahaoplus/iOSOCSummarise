@@ -7,6 +7,7 @@
 
 #import "ZHKeywordsModel.h"
 
+
 @implementation ZHKeywordsModel
 /*
  2020-10-25 21:48:37.263494+0800 practice[33497:756733] +[BaseModel(Test) initialize] 父类的分类会覆盖父类的initialize
@@ -15,9 +16,32 @@
  2020-10-25 21:48:37.263910+0800 practice[33497:756733] +[ZHKeywordsModel alloc]
  2020-10-25 21:48:37.264034+0800 practice[33497:756733] -[ZHKeywordsModel init]
  */
+-(void)print{
+    NSLog(@"my name's %@",self.strCopy);
+}
 -(instancetype)init{
-    NSLog(@"%s",__FUNCTION__);
-    return [super init];
+    //_cmd 默认的当前方法的指针，每个方法都有一些默认的参数，只是被隐藏了
+    NSLog(@"%s",__FUNCTION__);//_cmd当前方法
+    NSLog(@"--------------------------------------------");
+    if (self = [super init]) {
+        NSLog(@"[self class] %@",[self class]);
+        NSLog(@"[super class] %@",[super class]);
+        NSLog(@"[self superclass] %@",[self superclass]);
+        NSLog(@"[super superclass] %@",[super superclass]);
+        
+        NSLog(@"--------------------------------------------");
+        
+        BOOL res1 = [[NSObject class] isKindOfClass:[NSObject class]]; // 元类的类型还是NSObject
+        BOOL res2 = [[[NSObject alloc]init] isMemberOfClass:[NSObject class]];
+        BOOL res3 = [[ZHKeywordsModel class] isKindOfClass:[ZHKeywordsModel class]];
+        BOOL res4 = [[ZHKeywordsModel class] isMemberOfClass:[ZHKeywordsModel class]];
+        
+        NSLog(@"%d %d %d %d",res1,res2,res3,res4);
+        
+        NSLog(@"--------------------------------------------");
+        
+    }
+    return self ;
 }
 +(instancetype)alloc{
     NSLog(@"%s",__FUNCTION__);
@@ -39,10 +63,10 @@
  **/
 +(void)initialize
 {
-    if(self == [ZHKeywordsModel class])
-    {
+//    if(self == [ZHKeywordsModel class])
+//    {
               NSLog(@"%s",__FUNCTION__);
-    }
+//    }
 }
 
 

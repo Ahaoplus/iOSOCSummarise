@@ -14,11 +14,24 @@
 		94045869252E035600266012 /* ZHKeywordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94045868252E035600266012 /* ZHKeywordsModel.m */; };
 		94045870252E04B800266012 /* ZHUIMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9404586F252E04B800266012 /* ZHUIMaker.m */; };
 		9425779B25408E02009F2DD4 /* BaseModel+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 9425779A25408E02009F2DD4 /* BaseModel+Test.m */; };
+		9437E7DF2556EA9200E71471 /* ZHRunloopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9437E7DD2556EA9200E71471 /* ZHRunloopViewController.m */; };
+		9437E7E02556EA9200E71471 /* ZHRunloopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9437E7DE2556EA9200E71471 /* ZHRunloopViewController.xib */; };
+		9437E7E62556ECE100E71471 /* ZHThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 9437E7E52556ECE100E71471 /* ZHThread.m */; };
 		9485753D253E90DA0043ECD5 /* ZHGDCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9485753B253E90DA0043ECD5 /* ZHGDCViewController.m */; };
 		9485753E253E90DA0043ECD5 /* ZHGDCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9485753C253E90DA0043ECD5 /* ZHGDCViewController.xib */; };
 		949A66F1251B4F7F00555574 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 949A66F0251B4F7F00555574 /* BaseModel.m */; };
 		949A66F6251B4FB500555574 /* 笔记.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 949A66F5251B4FB500555574 /* 笔记.rtfd */; };
+		94CB37EE2549AA340016D410 /* ZHRuntimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB37EC2549AA340016D410 /* ZHRuntimeViewController.m */; };
+		94CB37EF2549AA340016D410 /* ZHRuntimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB37ED2549AA340016D410 /* ZHRuntimeViewController.xib */; };
+		94CB37FF2549BD9D0016D410 /* UIView+ZHVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB37FE2549BD9D0016D410 /* UIView+ZHVC.m */; };
+		94CB38082549C0E20016D410 /* ZHUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB38072549C0E20016D410 /* ZHUIView.m */; };
+		94CB380E2549C0FB0016D410 /* ZHUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB380D2549C0FB0016D410 /* ZHUIButton.m */; };
+		94CB38142549C5BE0016D410 /* UIView+Responder.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB38132549C5BE0016D410 /* UIView+Responder.m */; };
 		94CD1466254565DC00D37F39 /* BaseModel+Practise.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CD1465254565DC00D37F39 /* BaseModel+Practise.m */; };
+		94CD146F2545D32200D37F39 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CD146E2545D32200D37F39 /* TestModel.m */; };
+		94CD14752545D34900D37F39 /* Test2Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CD14742545D34900D37F39 /* Test2Model.m */; };
+		94CD147F2546B1D300D37F39 /* ZHBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CD147D2546B1D300D37F39 /* ZHBlockViewController.m */; };
+		94CD14802546B1D300D37F39 /* ZHBlockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CD147E2546B1D300D37F39 /* ZHBlockViewController.xib */; };
 		94DC9E8C251A12EF00EB27A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DC9E8B251A12EF00EB27A8 /* AppDelegate.m */; };
 		94DC9E8F251A12EF00EB27A8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DC9E8E251A12EF00EB27A8 /* SceneDelegate.m */; };
 		94DC9E95251A12EF00EB27A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DC9E93251A12EF00EB27A8 /* Main.storyboard */; };
@@ -113,6 +126,11 @@
 		9404586F252E04B800266012 /* ZHUIMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHUIMaker.m; sourceTree = "<group>"; };
 		9425779925408E02009F2DD4 /* BaseModel+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseModel+Test.h"; sourceTree = "<group>"; };
 		9425779A25408E02009F2DD4 /* BaseModel+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BaseModel+Test.m"; sourceTree = "<group>"; };
+		9437E7DC2556EA9200E71471 /* ZHRunloopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHRunloopViewController.h; sourceTree = "<group>"; };
+		9437E7DD2556EA9200E71471 /* ZHRunloopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHRunloopViewController.m; sourceTree = "<group>"; };
+		9437E7DE2556EA9200E71471 /* ZHRunloopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZHRunloopViewController.xib; sourceTree = "<group>"; };
+		9437E7E42556ECE100E71471 /* ZHThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHThread.h; sourceTree = "<group>"; };
+		9437E7E52556ECE100E71471 /* ZHThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHThread.m; sourceTree = "<group>"; };
 		9485753A253E90DA0043ECD5 /* ZHGDCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHGDCViewController.h; sourceTree = "<group>"; };
 		9485753B253E90DA0043ECD5 /* ZHGDCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHGDCViewController.m; sourceTree = "<group>"; };
 		9485753C253E90DA0043ECD5 /* ZHGDCViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZHGDCViewController.xib; sourceTree = "<group>"; };
@@ -120,8 +138,26 @@
 		949A66F0251B4F7F00555574 /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		949A66F5251B4FB500555574 /* 笔记.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "笔记.rtfd"; sourceTree = "<group>"; };
 		94A995C52543382D009171F2 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = "../../../../../../Library/Autosave Information/MyPlayground.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		94CB37EB2549AA340016D410 /* ZHRuntimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHRuntimeViewController.h; sourceTree = "<group>"; };
+		94CB37EC2549AA340016D410 /* ZHRuntimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHRuntimeViewController.m; sourceTree = "<group>"; };
+		94CB37ED2549AA340016D410 /* ZHRuntimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZHRuntimeViewController.xib; sourceTree = "<group>"; };
+		94CB37FD2549BD9D0016D410 /* UIView+ZHVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ZHVC.h"; sourceTree = "<group>"; };
+		94CB37FE2549BD9D0016D410 /* UIView+ZHVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZHVC.m"; sourceTree = "<group>"; };
+		94CB38062549C0E20016D410 /* ZHUIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHUIView.h; sourceTree = "<group>"; };
+		94CB38072549C0E20016D410 /* ZHUIView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHUIView.m; sourceTree = "<group>"; };
+		94CB380C2549C0FB0016D410 /* ZHUIButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHUIButton.h; sourceTree = "<group>"; };
+		94CB380D2549C0FB0016D410 /* ZHUIButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHUIButton.m; sourceTree = "<group>"; };
+		94CB38122549C5BE0016D410 /* UIView+Responder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Responder.h"; sourceTree = "<group>"; };
+		94CB38132549C5BE0016D410 /* UIView+Responder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Responder.m"; sourceTree = "<group>"; };
 		94CD1464254565DC00D37F39 /* BaseModel+Practise.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseModel+Practise.h"; sourceTree = "<group>"; };
 		94CD1465254565DC00D37F39 /* BaseModel+Practise.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BaseModel+Practise.m"; sourceTree = "<group>"; };
+		94CD146D2545D32200D37F39 /* TestModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestModel.h; sourceTree = "<group>"; };
+		94CD146E2545D32200D37F39 /* TestModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
+		94CD14732545D34900D37F39 /* Test2Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test2Model.h; sourceTree = "<group>"; };
+		94CD14742545D34900D37F39 /* Test2Model.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test2Model.m; sourceTree = "<group>"; };
+		94CD147C2546B1D300D37F39 /* ZHBlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHBlockViewController.h; sourceTree = "<group>"; };
+		94CD147D2546B1D300D37F39 /* ZHBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHBlockViewController.m; sourceTree = "<group>"; };
+		94CD147E2546B1D300D37F39 /* ZHBlockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZHBlockViewController.xib; sourceTree = "<group>"; };
 		94DC9E87251A12EF00EB27A8 /* practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94DC9E8A251A12EF00EB27A8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		94DC9E8B251A12EF00EB27A8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -218,6 +254,17 @@
 				94A995C52543382D009171F2 /* MyPlayground.playground */,
 			);
 			path = playground;
+			sourceTree = "<group>";
+		};
+		94CB37F32549BD260016D410 /* Cotegorys */ = {
+			isa = PBXGroup;
+			children = (
+				94CB37FD2549BD9D0016D410 /* UIView+ZHVC.h */,
+				94CB37FE2549BD9D0016D410 /* UIView+ZHVC.m */,
+				94CB38122549C5BE0016D410 /* UIView+Responder.h */,
+				94CB38132549C5BE0016D410 /* UIView+Responder.m */,
+			);
+			path = Cotegorys;
 			sourceTree = "<group>";
 		};
 		94CD1460254564CB00D37F39 /* Categorys */ = {
@@ -338,12 +385,17 @@
 		94DC9EC6251A141B00EB27A8 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				94CB37F32549BD260016D410 /* Cotegorys */,
 				94DC9EF6251A25A300EB27A8 /* SyntaxCollectionViewCell.h */,
 				94DC9EF7251A25A300EB27A8 /* SyntaxCollectionViewCell.m */,
 				94DC9EF8251A25A300EB27A8 /* SyntaxCollectionViewCell.xib */,
 				94045859252DCF1600266012 /* SyntaxCollectionReusableView.h */,
 				9404585A252DCF1600266012 /* SyntaxCollectionReusableView.m */,
 				9404585B252DCF1600266012 /* SyntaxCollectionReusableView.xib */,
+				94CB38062549C0E20016D410 /* ZHUIView.h */,
+				94CB38072549C0E20016D410 /* ZHUIView.m */,
+				94CB380C2549C0FB0016D410 /* ZHUIButton.h */,
+				94CB380D2549C0FB0016D410 /* ZHUIButton.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -358,7 +410,13 @@
 				94045854252DB31F00266012 /* SyntaxModel.m */,
 				94045867252E035600266012 /* ZHKeywordsModel.h */,
 				94045868252E035600266012 /* ZHKeywordsModel.m */,
+				94CD146D2545D32200D37F39 /* TestModel.h */,
+				94CD146E2545D32200D37F39 /* TestModel.m */,
 				94CD1460254564CB00D37F39 /* Categorys */,
+				94CD14732545D34900D37F39 /* Test2Model.h */,
+				94CD14742545D34900D37F39 /* Test2Model.m */,
+				9437E7E42556ECE100E71471 /* ZHThread.h */,
+				9437E7E52556ECE100E71471 /* ZHThread.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -427,6 +485,15 @@
 				9485753A253E90DA0043ECD5 /* ZHGDCViewController.h */,
 				9485753B253E90DA0043ECD5 /* ZHGDCViewController.m */,
 				9485753C253E90DA0043ECD5 /* ZHGDCViewController.xib */,
+				94CD147C2546B1D300D37F39 /* ZHBlockViewController.h */,
+				94CD147D2546B1D300D37F39 /* ZHBlockViewController.m */,
+				94CD147E2546B1D300D37F39 /* ZHBlockViewController.xib */,
+				94CB37EB2549AA340016D410 /* ZHRuntimeViewController.h */,
+				94CB37EC2549AA340016D410 /* ZHRuntimeViewController.m */,
+				94CB37ED2549AA340016D410 /* ZHRuntimeViewController.xib */,
+				9437E7DC2556EA9200E71471 /* ZHRunloopViewController.h */,
+				9437E7DD2556EA9200E71471 /* ZHRunloopViewController.m */,
+				9437E7DE2556EA9200E71471 /* ZHRunloopViewController.xib */,
 			);
 			path = Syntax;
 			sourceTree = "<group>";
@@ -546,12 +613,15 @@
 			files = (
 				9404585D252DCF1600266012 /* SyntaxCollectionReusableView.xib in Resources */,
 				949A66F6251B4FB500555574 /* 笔记.rtfd in Resources */,
+				94CB37EF2549AA340016D410 /* ZHRuntimeViewController.xib in Resources */,
 				94DC9E9A251A12F100EB27A8 /* LaunchScreen.storyboard in Resources */,
 				94FF6AB8252F423500BE99EB /* synTaxNotes.stringsdict in Resources */,
 				94FF6AAC252F32F000BE99EB /* ZHOOViewController.xib in Resources */,
 				94DC9E97251A12F100EB27A8 /* Assets.xcassets in Resources */,
 				94DC9E95251A12EF00EB27A8 /* Main.storyboard in Resources */,
+				9437E7E02556EA9200E71471 /* ZHRunloopViewController.xib in Resources */,
 				9485753E253E90DA0043ECD5 /* ZHGDCViewController.xib in Resources */,
+				94CD14802546B1D300D37F39 /* ZHBlockViewController.xib in Resources */,
 				94DC9EFA251A25A300EB27A8 /* SyntaxCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,26 +647,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94CB38082549C0E20016D410 /* ZHUIView.m in Sources */,
 				94FF6A9E252F29FB00BE99EB /* UIViewController+Normal.m in Sources */,
 				94CD1466254565DC00D37F39 /* BaseModel+Practise.m in Sources */,
 				9425779B25408E02009F2DD4 /* BaseModel+Test.m in Sources */,
 				94045870252E04B800266012 /* ZHUIMaker.m in Sources */,
 				94DC9E8C251A12EF00EB27A8 /* AppDelegate.m in Sources */,
+				94CD147F2546B1D300D37F39 /* ZHBlockViewController.m in Sources */,
+				9437E7E62556ECE100E71471 /* ZHThread.m in Sources */,
 				94FF6AB2252F3F4400BE99EB /* UITextView+Utils.m in Sources */,
+				94CB37FF2549BD9D0016D410 /* UIView+ZHVC.m in Sources */,
+				94CD146F2545D32200D37F39 /* TestModel.m in Sources */,
 				94DC9EF9251A25A300EB27A8 /* SyntaxCollectionViewCell.m in Sources */,
+				94CB38142549C5BE0016D410 /* UIView+Responder.m in Sources */,
 				94DC9ED7251A1D3300EB27A8 /* BaseViewController.m in Sources */,
 				94DC9E9D251A12F100EB27A8 /* main.m in Sources */,
+				94CB37EE2549AA340016D410 /* ZHRuntimeViewController.m in Sources */,
+				94CD14752545D34900D37F39 /* Test2Model.m in Sources */,
 				9404585C252DCF1600266012 /* SyntaxCollectionReusableView.m in Sources */,
 				94045869252E035600266012 /* ZHKeywordsModel.m in Sources */,
 				94DC9EEC251A1D9100EB27A8 /* MainViewController.m in Sources */,
 				94DC9ECD251A17AA00EB27A8 /* PageBViewController.m in Sources */,
 				94045855252DB31F00266012 /* SyntaxModel.m in Sources */,
 				94DC9F06251A446300EB27A8 /* SyntaxCollectionViewController.m in Sources */,
+				94CB380E2549C0FB0016D410 /* ZHUIButton.m in Sources */,
 				949A66F1251B4F7F00555574 /* BaseModel.m in Sources */,
 				94DC9E8F251A12EF00EB27A8 /* SceneDelegate.m in Sources */,
 				9485753D253E90DA0043ECD5 /* ZHGDCViewController.m in Sources */,
 				94DC9EE6251A1D7400EB27A8 /* CommonModel.m in Sources */,
 				94FF6ABE252F549100BE99EB /* UIViewController+Tracking.m in Sources */,
+				9437E7DF2556EA9200E71471 /* ZHRunloopViewController.m in Sources */,
 				94DC9F00251A3F2300EB27A8 /* MyUITableViewController.m in Sources */,
 				94FF6AAB252F32F000BE99EB /* ZHOOViewController.m in Sources */,
 				94DC9EF2251A217E00EB27A8 /* SyntaxViewController.m in Sources */,

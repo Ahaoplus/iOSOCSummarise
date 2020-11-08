@@ -71,47 +71,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "53669B95-8DE6-4797-A974-7A892EF12505"
+            uuid = "A38B8DF1-416A-4ED3-8C01-5C4AE34ACF20"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "practice/mvc/controllers/Syntax/SyntaxViewController.m"
+            filePath = "practice/mvc/controllers/Syntax/ZHKeywordsViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-changeMulString"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5733DCEA-5B83-42CA-9E8F-2290E910507A"
-            shouldBeEnabled = "Yes"
+            uuid = "7C5EF876-54C0-4B9D-8B25-90CD077D84E6"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "practice/mvc/models/ZHKeywordsModel.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "+new"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EADB3EE1-46BB-4E4B-B12B-C65E364994FB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "practice/mvc/models/ZHKeywordsModel.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "-init"
             landmarkType = "7">
          </BreakpointContent>
@@ -119,16 +103,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8F5905D2-B6B7-475E-B9A3-959755CD8C9B"
+            uuid = "11F35E96-933D-4FCB-BCDF-F44D578FCA07"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "practice/mvc/models/ZHKeywordsModel.m"
+            filePath = "practice/mvc/models/ZHThread.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "+alloc"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "-dealloc"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

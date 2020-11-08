@@ -14,10 +14,10 @@
               @{@"key":@"ZHKeywordsViewController",@"title":@"关键字",@"icon":@"",@"authCode":@""},
               @{@"key":@"ZHOOViewController",@"type":@"nib",@"title":@"类和对象",@"icon":@"",@"authCode":@""},
               @{@"key":@"ZHGDCViewController",@"type":@"nib",@"title":@"GDC",@"icon":@"",@"authCode":@""},
-              @{@"key":@"key0-1",@"type":@"storyboard",@"title":@"Block编程",@"icon":@"",@"authCode":@""},
-              @{@"key":@"key0-2",@"title":@"Runtime",@"icon":@"",@"authCode":@""},
+              @{@"key":@"ZHBlockViewController",@"type":@"nib",@"title":@"Block编程",@"icon":@"",@"authCode":@""},
+              @{@"key":@"ZHRuntimeViewController",@"type":@"nib",@"title":@"Runtime",@"icon":@"",@"authCode":@""},
               @{@"key":@"key0-3",@"title":@"内存管理",@"icon":@"",@"authCode":@""},
-              @{@"key":@"key0-4",@"title":@"Runloop",@"icon":@"",@"authCode":@""}
+              @{@"key":@"ZHRunloopViewController",@"type":@"nib",@"title":@"Runloop",@"icon":@"",@"authCode":@""}
             ]
         },
         @{@"key":@"computer-network",@"title":@"计算机网络",@"children":@[
