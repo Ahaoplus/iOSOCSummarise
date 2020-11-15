@@ -102,6 +102,130 @@ static int clickCount = 1;
     labelAssign.text = strModel.strAssgin;
     labelWeak.text = strModel.strWeak;
 }
+-(void)treeDateTreePrint:(NSArray*)dataArray{
+    NSArray* treeData = [self treeData];
+    for (NSDictionary* node in treeData) {
+        NSLog(@"node title is %@",node[@"title"]);
+        if ([node[@"children"] isKindOfClass:[NSArray class]]) {
+            
+        }
+    }
+}
+
+-(NSArray*)treeData{
+    return  @[
+    @{
+        @"title":@"A",
+        @"children":@[
+                @{@"title":@"A-A",
+                  @"children":@[
+                          @{@"title":@"A-A-A",@"children":@[]},
+                          @{@"title":@"A-A-B",@"children":@[]},
+                          @{@"title":@"A-A-C",@"children":@[]},
+                          @{@"title":@"A-A-D",@"children":@[]},
+                  ]},
+                @{@"title":@"A-B",
+                  @"children":@[
+                          @{@"title":@"A-B-A",@"children":@[]},
+                          @{@"title":@"A-B-B",@"children":@[]},
+                          @{@"title":@"A-B-C",@"children":@[]},
+                          @{@"title":@"A-B-D",@"children":@[]},
+                  ]},
+                @{@"title":@"A-C",
+                  @"children":@[
+                          @{@"title":@"A-C-A",@"children":@[]},
+                          @{@"title":@"A-C-B",@"children":@[]},
+                          @{@"title":@"A-C-C",@"children":@[]},
+                          @{@"title":@"A-C-D",@"children":@[]},
+                  ]}
+        ]
+    },
+    @{
+        @"title":@"B",
+        @"children":@[
+                @{@"title":@"B-A",
+                  @"children":@[
+                          @{@"title":@"B-A-A",@"children":@[]},
+                          @{@"title":@"B-A-B",@"children":@[]},
+                          @{@"title":@"B-A-C",@"children":@[]},
+                          @{@"title":@"B-A-D",@"children":@[]},
+                  ]},
+                @{@"title":@"B-B",
+                  @"children":@[
+                          @{@"title":@"B-B-A",@"children":@[]},
+                          @{@"title":@"B-B-B",@"children":@[]},
+                          @{@"title":@"B-B-C",@"children":@[]},
+                          @{@"title":@"B-B-D",@"children":@[]},
+                  ]},
+                @{@"title":@"B-C",
+                  @"children":@[
+                          @{@"title":@"B-C-A",@"children":@[]},
+                          @{@"title":@"B-C-B",@"children":@[]},
+                          @{@"title":@"B-C-C",@"children":@[]},
+                          @{@"title":@"B-C-D",@"children":@[]},
+                  ]}
+        ]
+    },
+    @{
+        @"title":@"C",
+        @"children":@[
+                @{@"title":@"C-A",
+                  @"children":@[
+                          @{@"title":@"C-A-A",@"children":@[]},
+                          @{@"title":@"C-A-B",@"children":@[]},
+                          @{@"title":@"C-A-C",@"children":@[]},
+                          @{@"title":@"C-A-D",@"children":@[]},
+                  ]},
+                @{@"title":@"C-B",
+                  @"children":@[
+                          @{@"title":@"C-B-A",@"children":@[]},
+                          @{@"title":@"C-B-B",@"children":@[]},
+                          @{@"title":@"C-B-C",@"children":@[]},
+                          @{@"title":@"C-B-D",@"children":@[]},
+                  ]},
+                @{@"title":@"C-C",
+                  @"children":@[
+                          @{@"title":@"C-C-A",@"children":@[]},
+                          @{@"title":@"C-C-B",@"children":@[]},
+                          @{@"title":@"C-C-C",@"children":@[]},
+                          @{@"title":@"C-C-D",@"children":@[]},
+                  ]}
+        ]
+    },
+    @{
+        @"title":@"D",
+        @"children":@[
+                @{@"title":@"D-A",
+                  @"children":@[
+                          @{@"title":@"D-A-A",@"children":@[@{@"title":@"D-A-A-A",@"children":@[]},@{@"title":@"D-A-A-B",@"children":@[]},]},
+                          @{@"title":@"D-A-B",@"children":@[]},
+                          @{@"title":@"D-A-C",@"children":@[]},
+                          @{@"title":@"D-A-D",@"children":@[]},
+                  ]},
+                @{@"title":@"D-B",
+                  @"children":@[
+                          @{@"title":@"D-B-A",@"children":@[]},
+                          @{@"title":@"D-B-B",@"children":@[]},
+                          @{@"title":@"D-B-C",@"children":@[]},
+                          @{@"title":@"D-B-D",@"children":@[]},
+                  ]},
+                @{@"title":@"D-C",
+                  @"children":@[
+                          @{@"title":@"D-C-A",@"children":@[]},
+                          @{@"title":@"D-C-B",@"children":@[]},
+                          @{@"title":@"D-C-C",@"children":@[]},
+                          @{@"title":@"D-C-D",@"children":@[]},
+                  ]},
+                @{@"title":@"D-D",
+                  @"children":@[
+                          @{@"title":@"D-D-A",@"children":@[]},
+                          @{@"title":@"D-D-B",@"children":@[]},
+                          @{@"title":@"D-D-C",@"children":@[]},
+                          @{@"title":@"D-D-D",@"children":@[]},
+                  ]}
+        ]
+    }];
+}
 /*
 #pragma mark - Navigation
 

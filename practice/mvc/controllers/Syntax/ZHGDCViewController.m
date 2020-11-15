@@ -15,17 +15,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self threadAndRunloop];
 //    [self testMainqueue];
 //    [self barrier];
 //    [self testSerialSync];
 //    [self testSerialAsync];
     [self testGlobalQueue];
-    
+    [self groupNotify];
     //并发队列中执行异步任务
 //    [self testConcurrentAsync];
     // Do any additional setup after loading the view from its nib.
 }
-
+-(void)test01{
+    NSLog(@"并发队列-异步任务------1-----");
+}
+-(void)test02{
+    NSLog(@"并发队列-异步任务------2-------");
+}
+-(void)test03{
+    NSLog(@"并发队列-异步任务------3------");
+}
+-(void)test04{
+    NSLog(@"并发队列-异步任务------4------");
+}
+/**
+ 2020-11-15 20:43:01.716829+0800 practice[2723:31093] 并发队列-异步任务------1-----
+ 2020-11-15 20:43:01.716884+0800 practice[2723:31099] 并发队列-异步任务------2-------
+ 2020-11-15 20:43:01.716977+0800 practice[2723:31192] 并发队列-异步任务------4------
+ 注意： 3任务没打印出来，跟Runloop有关，没有启动
+ */
+-(void)threadAndRunloop{
+    dispatch_queue_t queue = dispatch_queue_create("bing fa queue", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue, ^{
+        [self test01];
+    });
+    dispatch_async(queue, ^{
+        [self performSelector:@selector(test02) withObject:nil];
+    });
+    dispatch_async(queue, ^{
+        [self performSelector:@selector(test03) withObject:nil afterDelay:.0];
+    });
+    dispatch_async(queue, ^{
+        [self test04];
+    });
+}
 /**
  * 串行队列 同步执行
  * 对于串行队列，GCD 默认提供了：『主队列（Main Dispatch Queue）』。
@@ -271,19 +304,25 @@
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 追加任务 1
         [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
+        for(int i = 0; i<10;i++){
+            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
+        }
     });
     
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 追加任务 2
         [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
+        for(int i = 0; i<10;i++){
+            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
+        }
     });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         // 等前面的异步任务 1、任务 2 都执行完毕后，回到主线程执行下边任务
         [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-        NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
+        for(int i = 0; i<10;i++){
+            NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
+        }
         NSLog(@"group---end");
     });
 }

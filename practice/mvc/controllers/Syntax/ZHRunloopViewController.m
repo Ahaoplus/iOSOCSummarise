@@ -26,7 +26,9 @@
     self.zthread = [[ZHThread alloc]initWithBlock:^{
         NSLog(@"runloop start %s",__func__);
         [[NSRunLoop currentRunLoop] addPort:[[NSPort alloc] init] forMode:NSDefaultRunLoopMode];
-        while (!weakSelf.isStoped) {
+        //__strong typeof(self) strongSelf = weakSelf;  //会循环引用
+        while (weakSelf && !weakSelf.isStoped) {
+            NSLog(@"weakSelf is %@",weakSelf);//weakSelf is (null)
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
         NSLog(@"runloop end %s",__func__);
@@ -44,15 +46,15 @@
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];*/
 }
 //如果不调用stop的话runloop就不会停止，就没办法销毁
-- (IBAction)stopRunloop:(id)sender {
-    [self performSelector:@selector(stopAction) onThread:self.zthread  withObject:nil waitUntilDone:NO];
+- (IBAction)stopRunloop:(id) button {
+    [self performSelector:@selector(stopAction) onThread:self.zthread  withObject:nil waitUntilDone:YES];
 }
 -(void)dddStop{
-    [self performSelector:@selector(stopAction) onThread:self.zthread  withObject:nil waitUntilDone:NO];
+    [self performSelector:@selector(stopAction) onThread:self.zthread  withObject:nil waitUntilDone:YES];
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     //TODO 点一下再点一下就挂掉了
-    [self performSelector:@selector(test) onThread:self.zthread withObject:nil waitUntilDone:NO];
+    [self performSelector:@selector(test) onThread:self.zthread withObject:nil waitUntilDone:YES];
     NSLog(@"%s",__func__);
 }
 -(void)test{
@@ -63,6 +65,7 @@
 -(void)stopAction{
     self.stop = YES;
     CFRunLoopStop(CFRunLoopGetCurrent());
+    NSLog(@"%s %@",__func__,[NSThread currentThread]);
 }
 //很奇怪，直接在block中调用方法会导致强引用
 -(void)run{
@@ -79,7 +82,6 @@
     NSLog(@"runloop end %s",__func__);
 }
 -(void)dealloc{
-    [self dddStop];
     NSLog(@"%s",__func__);
 }
 /*
