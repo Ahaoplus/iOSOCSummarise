@@ -184,6 +184,7 @@
 {//CADisplayLink指向的方法，一直绘制
     CFTimeInterval now = CACurrentMediaTime();
     for (NSUInteger i = 0; i < self.attributedString.length; i ++) {
+        //判断这个字符是否为空格，是的话不需要处理
         if ([[NSCharacterSet whitespaceAndNewlineCharacterSet] characterIsMember:[self.attributedString.string characterAtIndex:i]]) {
             continue;
         }
