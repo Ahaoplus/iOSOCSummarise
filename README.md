@@ -10,4 +10,6 @@
    ![image](https://github.com/Ahaoplus/iOSOCSummarise/blob/master/Snapshots/oc-keywords.png)
 
    1.2 GDC
+
+   3.1 渐近渐出效果的文字源码阅读
    

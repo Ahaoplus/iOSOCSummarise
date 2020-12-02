@@ -6,9 +6,9 @@
 //
 
 #import "MyUITableViewController.h"
-
+#import "AnimationModel.h"
 @interface MyUITableViewController ()
-
+@property(nonatomic,strong)NSArray* dataList;
 @end
 
 @implementation MyUITableViewController
@@ -18,6 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"UI和动画";
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    _dataList = [AnimationModel getAnimationModels];
     [self.tableView reloadData];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -25,26 +29,51 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _dataList.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyUITableViewCell" forIndexPath:indexPath];
-    
+    NSDictionary* dic = _dataList[indexPath.row];
+    cell.textLabel.text = dic[@"title"];
+    cell.textLabel.textColor = [UIColor blackColor];
     // Configure the cell...
     
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{//跳转到下一页
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary* dic = _dataList[indexPath.row];
+    if ([NSClassFromString(dic[@"target"]) isSubclassOfClass:[UIViewController class]]) {
+        UIViewController* vc = nil;
+        if(!dic[@"type"]){
+            vc = [[NSClassFromString(dic[@"target"]) alloc] init];
+            
+        }else if ([@"nib" isEqualToString:dic[@"type"]]){
+            vc = [[NSClassFromString(dic[@"target"]) alloc] initWithNibName:dic[@"key"] bundle:nil];
+        }
+        else if ([@"storyboard" isEqualToString:dic[@"target"]]){
+            vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:dic[@"target"]];
+            
+        }else{
+            vc = [[UIViewController alloc]init];
+        }
+        [self showViewController:vc sender:self];
+        
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.

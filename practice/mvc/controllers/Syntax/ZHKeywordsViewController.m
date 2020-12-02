@@ -22,6 +22,8 @@ static int clickCount = 1;
     UILabel* labelAssign;
     UILabel* labelWeak;
 }
+@property(atomic,assign)NSInteger count;
+@property(nonatomic,assign)NSInteger number;
 @end
 
 @implementation ZHKeywordsViewController
@@ -29,6 +31,7 @@ static int clickCount = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关键字总结";
+    [self atomicTest];
     mulStr = [NSMutableString stringWithString:@"我是一个可变字符串："];
     strModel = [ZHKeywordsModel new];
     /*
@@ -80,6 +83,75 @@ static int clickCount = 1;
     model1.exerciseName = @"艺术体操";
     NSLog(@"%@",model1.exerciseName);
     [Test2Model new];
+}
+-(void)atomicTest{
+    self.count = 0;
+    self.number = 0;
+    dispatch_queue_t concurrentQueue = dispatch_queue_create("aaa", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_group_t dispatch_group = dispatch_group_create();
+    
+    dispatch_group_async(dispatch_group, concurrentQueue, ^{
+        for (int i=0; i<100; i++) {//+100
+            self.count++;
+        }
+        NSLog(@"1、self.count is %ld ",(long)self.count);
+    });
+    dispatch_group_async(dispatch_group, concurrentQueue, ^{
+        for (int i=0; i<100; i++) {//+100
+            self.number++;
+        }
+        NSLog(@"1、self.number is %ld",(long)self.number);
+    });
+    dispatch_group_async(dispatch_group,concurrentQueue, ^{
+        for (int i=0; i<100; i++) {//-100
+            self.count--;
+        }
+        NSLog(@"2、self.count is %ld ;self.number is %ld",(long)self.count,(long)self.number);
+    });
+    dispatch_group_async(dispatch_group,concurrentQueue, ^{
+        
+        for (int i=0; i<100; i++) {//-100
+            self.number--;
+        }
+        NSLog(@"2、self.count is %ld ;self.number is %ld",(long)self.count,(long)self.number);
+    });
+    
+    dispatch_group_async(dispatch_group,concurrentQueue, ^{
+        for (int i=0; i<1000; i++) {//-100
+            self.count--;
+            
+        }
+        NSLog(@"3、self.count is %ld ;self.number is %ld",(long)self.count,(long)self.number);
+    });
+    dispatch_group_async(dispatch_group,concurrentQueue, ^{
+        for (int i=0; i<1000; i++) {//-100
+            self.number--;
+        }
+        
+        NSLog(@"3、self.count is %ld ;self.number is %ld",(long)self.count,(long)self.number);
+    });
+    dispatch_group_async(dispatch_group,concurrentQueue, ^{
+        
+        for (int i=0; i<1000; i++) {//+1000
+            self.number++;
+        }
+        NSLog(@"4、self.count is %ld ;self.number is %ld",(long)self.count,(long)self.number);
+    });
+    dispatch_group_async(dispatch_group,concurrentQueue, ^{
+        for (int i=0; i<1000; i++) {//+1000
+            self.count++;
+        }
+        
+        NSLog(@"4、self.count is %ld ;self.number is %ld",(long)self.count,(long)self.number);
+    });
+    dispatch_group_notify(dispatch_group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSLog(@"the end result is self.count is %ld ;self.number is %ld",(long)self.count,(long)self.number);
+    });
+    dispatch_group_notify(dispatch_group,dispatch_get_main_queue(), ^{
+        self->labelStrong.text = [NSString stringWithFormat:@"self.count(atomic) is %ld ;self.number is %ld",(long)self.count,(long)self.number];
+        self->labelCopy.text = [NSString stringWithFormat:@"the right result is self.count = 0 ;self.number = 0"];
+    });
 }
 -(void)changeMulString{
     [mulStr appendString:[NSString stringWithFormat:@"-%d-",clickCount]];

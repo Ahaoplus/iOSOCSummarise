@@ -17,6 +17,7 @@ static NSString * POST = @"POST";
 
 @implementation ZHRequestEngine
 
+//获取AFN单例
 + (AFHTTPSessionManager *)managerShare {
     
     return [AFHTTPSessionManager manager];
@@ -26,11 +27,12 @@ static NSString * POST = @"POST";
                withParameters:(NSDictionary *) parameters
                     withBlock:(BlockResponse) block
                     withErrorBlock:(BlockResponseError) errBlock {
-    
-    
     [self requestByGetTransform:urlPath withParameters:parameters withBlock:block withErrorBlock:errBlock withNeedHud:YES withNeedCatch:YES];
     
 }
+/**
+ GET方法
+ */
 + (void)requestByGetTransform:(NSString *)urlPath
                withParameters:(NSDictionary *) parameters
                     withBlock:(BlockResponse) block
@@ -39,8 +41,9 @@ static NSString * POST = @"POST";
                 withNeedCatch:(BOOL)needCatch
           ResponseKeyDisorder:(BOOL)disorder{
     
-    
+    //获取AFHTTPSessionManager单例
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     //new add
     manager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];

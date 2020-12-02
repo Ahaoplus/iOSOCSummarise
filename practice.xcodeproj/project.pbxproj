@@ -14,12 +14,13 @@
 		94045869252E035600266012 /* ZHKeywordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94045868252E035600266012 /* ZHKeywordsModel.m */; };
 		94045870252E04B800266012 /* ZHUIMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9404586F252E04B800266012 /* ZHUIMaker.m */; };
 		9425779B25408E02009F2DD4 /* BaseModel+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 9425779A25408E02009F2DD4 /* BaseModel+Test.m */; };
+		9428FAA72577BB5300BBBD33 /* RQShineDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9428FAA62577BB5200BBBD33 /* RQShineDemoViewController.m */; };
+		9428FAAD2577BB6600BBBD33 /* RQShineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9428FAAC2577BB6600BBBD33 /* RQShineLabel.m */; };
+		9428FAB62577BE8E00BBBD33 /* AnimationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9428FAB52577BE8E00BBBD33 /* AnimationModel.m */; };
 		9437E7DF2556EA9200E71471 /* ZHRunloopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9437E7DD2556EA9200E71471 /* ZHRunloopViewController.m */; };
 		9437E7E02556EA9200E71471 /* ZHRunloopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9437E7DE2556EA9200E71471 /* ZHRunloopViewController.xib */; };
 		9437E7E62556ECE100E71471 /* ZHThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 9437E7E52556ECE100E71471 /* ZHThread.m */; };
 		94756FCD256169BD0096D111 /* ZHRequestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 94756FCC256169BD0096D111 /* ZHRequestEngine.m */; };
-		9475707625616AD60096D111 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 94756FD225616AD50096D111 /* LICENSE.md */; };
-		9475707725616AD60096D111 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 94756FD325616AD50096D111 /* README.md */; };
 		9475707825616AD60096D111 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94756FD625616AD50096D111 /* IQTextView.m */; };
 		9475707925616AD60096D111 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 94756FDA25616AD50096D111 /* IQToolbar.m */; };
 		9475707A25616AD60096D111 /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 94756FDC25616AD50096D111 /* IQTitleBarButtonItem.m */; };
@@ -34,7 +35,6 @@
 		9475708325616AD60096D111 /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 94756FF025616AD50096D111 /* IQUIView+Hierarchy.m */; };
 		9475708425616AD60096D111 /* IQUIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 94756FF425616AD50096D111 /* IQUIViewController+Additions.m */; };
 		9475708525616AD60096D111 /* IQKeyboardReturnKeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 94756FF625616AD50096D111 /* IQKeyboardReturnKeyHandler.m */; };
-		9475708625616AD60096D111 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 94756FF825616AD60096D111 /* LICENSE */; };
 		9475708725616AD60096D111 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 94756FFB25616AD60096D111 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		9475708825616AD60096D111 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475700425616AD60096D111 /* ViewController+MASAdditions.m */; };
 		9475708925616AD60096D111 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475700825616AD60096D111 /* MASCompositeConstraint.m */; };
@@ -45,10 +45,7 @@
 		9475708E25616AD60096D111 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475700F25616AD60096D111 /* MASConstraint.m */; };
 		9475708F25616AD60096D111 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475701125616AD60096D111 /* MASViewConstraint.m */; };
 		9475709025616AD60096D111 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475701225616AD60096D111 /* MASViewAttribute.m */; };
-		9475709125616AD60096D111 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9475701325616AD60096D111 /* README.md */; };
 		9475709225616AD60096D111 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475701525616AD60096D111 /* MBProgressHUD.m */; };
-		9475709325616AD60096D111 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9475701625616AD60096D111 /* LICENSE */; };
-		9475709425616AD60096D111 /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 9475701825616AD60096D111 /* README.mdown */; };
 		9475709525616AD60096D111 /* MJPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475701E25616AD60096D111 /* MJPropertyType.m */; };
 		9475709625616AD60096D111 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475702125616AD60096D111 /* NSObject+MJKeyValue.m */; };
 		9475709725616AD60096D111 /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475702225616AD60096D111 /* MJProperty.m */; };
@@ -59,16 +56,11 @@
 		9475709C25616AD60096D111 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475702A25616AD60096D111 /* NSString+MJExtension.m */; };
 		9475709D25616AD60096D111 /* MJPropertyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475702B25616AD60096D111 /* MJPropertyKey.m */; };
 		9475709E25616AD60096D111 /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475702F25616AD60096D111 /* MJFoundation.m */; };
-		9475709F25616AD60096D111 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9475703025616AD60096D111 /* LICENSE */; };
-		947570A025616AD60096D111 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9475703125616AD60096D111 /* README.md */; };
-		947570A125616AD60096D111 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 9475703325616AD60096D111 /* README.markdown */; };
-		947570A225616AD60096D111 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9475703425616AD60096D111 /* LICENSE.txt */; };
 		947570A325616AD60096D111 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475703825616AD60096D111 /* FMDatabaseQueue.m */; };
 		947570A425616AD60096D111 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475703B25616AD60096D111 /* FMDatabaseAdditions.m */; };
 		947570A525616AD60096D111 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475703C25616AD60096D111 /* FMDatabase.m */; };
 		947570A625616AD60096D111 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475704025616AD60096D111 /* FMDatabasePool.m */; };
 		947570A725616AD60096D111 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475704125616AD60096D111 /* FMResultSet.m */; };
-		947570A825616AD60096D111 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9475704325616AD60096D111 /* LICENSE */; };
 		947570A925616AD60096D111 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475704525616AD60096D111 /* UIScrollView+MJRefresh.m */; };
 		947570AA25616AD60096D111 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475704625616AD60096D111 /* MJRefreshConst.m */; };
 		947570AB25616AD60096D111 /* MJRefreshConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475704725616AD60096D111 /* MJRefreshConfig.m */; };
@@ -90,7 +82,6 @@
 		947570BB25616AD60096D111 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475706F25616AD60096D111 /* MJRefreshBackFooter.m */; };
 		947570BC25616AD60096D111 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475707025616AD60096D111 /* MJRefreshAutoFooter.m */; };
 		947570BD25616AD60096D111 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9475707225616AD60096D111 /* MJRefreshComponent.m */; };
-		947570BE25616AD70096D111 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9475707525616AD60096D111 /* README.md */; };
 		947570C425616DFD0096D111 /* UIViewController+Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 947570C325616DFD0096D111 /* UIViewController+Find.m */; };
 		9485753D253E90DA0043ECD5 /* ZHGDCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9485753B253E90DA0043ECD5 /* ZHGDCViewController.m */; };
 		9485753E253E90DA0043ECD5 /* ZHGDCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9485753C253E90DA0043ECD5 /* ZHGDCViewController.xib */; };
@@ -216,6 +207,12 @@
 		9404586F252E04B800266012 /* ZHUIMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHUIMaker.m; sourceTree = "<group>"; };
 		9425779925408E02009F2DD4 /* BaseModel+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseModel+Test.h"; sourceTree = "<group>"; };
 		9425779A25408E02009F2DD4 /* BaseModel+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BaseModel+Test.m"; sourceTree = "<group>"; };
+		9428FAA52577BB5200BBBD33 /* RQShineDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQShineDemoViewController.h; sourceTree = "<group>"; };
+		9428FAA62577BB5200BBBD33 /* RQShineDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQShineDemoViewController.m; sourceTree = "<group>"; };
+		9428FAAB2577BB6600BBBD33 /* RQShineLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RQShineLabel.h; sourceTree = "<group>"; };
+		9428FAAC2577BB6600BBBD33 /* RQShineLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQShineLabel.m; sourceTree = "<group>"; };
+		9428FAB42577BE8E00BBBD33 /* AnimationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimationModel.h; sourceTree = "<group>"; };
+		9428FAB52577BE8E00BBBD33 /* AnimationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationModel.m; sourceTree = "<group>"; };
 		9437E7DC2556EA9200E71471 /* ZHRunloopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHRunloopViewController.h; sourceTree = "<group>"; };
 		9437E7DD2556EA9200E71471 /* ZHRunloopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHRunloopViewController.m; sourceTree = "<group>"; };
 		9437E7DE2556EA9200E71471 /* ZHRunloopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZHRunloopViewController.xib; sourceTree = "<group>"; };
@@ -509,6 +506,24 @@
 				94756FCC256169BD0096D111 /* ZHRequestEngine.m */,
 			);
 			path = tools;
+			sourceTree = "<group>";
+		};
+		9428FAA42577BB3500BBBD33 /* RQShineLabel */ = {
+			isa = PBXGroup;
+			children = (
+				9428FAAB2577BB6600BBBD33 /* RQShineLabel.h */,
+				9428FAAC2577BB6600BBBD33 /* RQShineLabel.m */,
+				9428FAA52577BB5200BBBD33 /* RQShineDemoViewController.h */,
+				9428FAA62577BB5200BBBD33 /* RQShineDemoViewController.m */,
+			);
+			path = RQShineLabel;
+			sourceTree = "<group>";
+		};
+		9428FABA2577C2FE00BBBD33 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		94756FD125616AD50096D111 /* IQKeyboardManager */ = {
@@ -834,6 +849,7 @@
 		94857542253EED550043ECD5 /* lib-source-codes */ = {
 			isa = PBXGroup;
 			children = (
+				9428FAA42577BB3500BBBD33 /* RQShineLabel */,
 				9475703225616AD60096D111 /* FMDB */,
 				94756FD125616AD50096D111 /* IQKeyboardManager */,
 				94756FF725616AD60096D111 /* Masonry */,
@@ -1015,6 +1031,7 @@
 		94DC9EC5251A141400EB27A8 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9428FABA2577C2FE00BBBD33 /* UI */,
 				94DC9ECB251A17AA00EB27A8 /* PageBViewController.h */,
 				94DC9ECC251A17AA00EB27A8 /* PageBViewController.m */,
 				94FF6A98252F288A00BE99EB /* Syntax */,
@@ -1061,6 +1078,8 @@
 				94CD14742545D34900D37F39 /* Test2Model.m */,
 				9437E7E42556ECE100E71471 /* ZHThread.h */,
 				9437E7E52556ECE100E71471 /* ZHThread.m */,
+				9428FAB42577BE8E00BBBD33 /* AnimationModel.h */,
+				9428FAB52577BE8E00BBBD33 /* AnimationModel.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1257,32 +1276,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				947570A125616AD60096D111 /* README.markdown in Resources */,
 				9475707E25616AD60096D111 /* IQKeyboardManager.xcassets in Resources */,
 				9404585D252DCF1600266012 /* SyntaxCollectionReusableView.xib in Resources */,
 				949A66F6251B4FB500555574 /* 笔记.rtfd in Resources */,
-				947570BE25616AD70096D111 /* README.md in Resources */,
-				947570A025616AD60096D111 /* README.md in Resources */,
 				94CB37EF2549AA340016D410 /* ZHRuntimeViewController.xib in Resources */,
-				9475709425616AD60096D111 /* README.mdown in Resources */,
 				94DC9E9A251A12F100EB27A8 /* LaunchScreen.storyboard in Resources */,
 				94FF6AB8252F423500BE99EB /* synTaxNotes.stringsdict in Resources */,
-				9475709325616AD60096D111 /* LICENSE in Resources */,
 				94FF6AAC252F32F000BE99EB /* ZHOOViewController.xib in Resources */,
 				94DC9E97251A12F100EB27A8 /* Assets.xcassets in Resources */,
 				94DC9E95251A12EF00EB27A8 /* Main.storyboard in Resources */,
 				9437E7E02556EA9200E71471 /* ZHRunloopViewController.xib in Resources */,
-				9475708625616AD60096D111 /* LICENSE in Resources */,
-				9475709125616AD60096D111 /* README.md in Resources */,
-				947570A225616AD60096D111 /* LICENSE.txt in Resources */,
-				9475709F25616AD60096D111 /* LICENSE in Resources */,
 				947570AC25616AD60096D111 /* MJRefresh.bundle in Resources */,
-				947570A825616AD60096D111 /* LICENSE in Resources */,
 				9485753E253E90DA0043ECD5 /* ZHGDCViewController.xib in Resources */,
-				9475707725616AD60096D111 /* README.md in Resources */,
 				94CD14802546B1D300D37F39 /* ZHBlockViewController.xib in Resources */,
 				94DC9EFA251A25A300EB27A8 /* SyntaxCollectionViewCell.xib in Resources */,
-				9475707625616AD60096D111 /* LICENSE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,6 +1380,7 @@
 				94DC9F06251A446300EB27A8 /* SyntaxCollectionViewController.m in Sources */,
 				9475708F25616AD60096D111 /* MASViewConstraint.m in Sources */,
 				9475708D25616AD60096D111 /* View+MASAdditions.m in Sources */,
+				9428FAA72577BB5300BBBD33 /* RQShineDemoViewController.m in Sources */,
 				94CB380E2549C0FB0016D410 /* ZHUIButton.m in Sources */,
 				947570A725616AD60096D111 /* FMResultSet.m in Sources */,
 				9475708925616AD60096D111 /* MASCompositeConstraint.m in Sources */,
@@ -1413,12 +1421,14 @@
 				94FF6AA4252F2A1F00BE99EB /* UIViewController+Attributes.m in Sources */,
 				9475709C25616AD60096D111 /* NSString+MJExtension.m in Sources */,
 				947570B525616AD60096D111 /* MJRefreshAutoNormalFooter.m in Sources */,
+				9428FAAD2577BB6600BBBD33 /* RQShineLabel.m in Sources */,
 				947570AE25616AD60096D111 /* NSBundle+MJRefresh.m in Sources */,
 				947570B725616AD60096D111 /* MJRefreshStateHeader.m in Sources */,
 				9495B1442560DA9300121954 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				9475707C25616AD60096D111 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				9495B1482560DA9300121954 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				947570A325616AD60096D111 /* FMDatabaseQueue.m in Sources */,
+				9428FAB62577BE8E00BBBD33 /* AnimationModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
