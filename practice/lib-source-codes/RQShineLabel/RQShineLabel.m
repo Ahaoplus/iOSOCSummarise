@@ -74,6 +74,13 @@
     _characterAnimationDelays    = [NSMutableArray array];
 
     _displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateAttributedString)];
+    if (@available(iOS 10.0,*)) {
+        _displaylink.preferredFramesPerSecond = 4;//间隔多少桢调用一次，默认的是喝屏幕刷新率一致的
+    }else{
+        _displaylink.frameInterval = 4;
+    }
+   
+   
     _displaylink.paused = YES;
     [_displaylink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];//加入到当前的Runloop
 }

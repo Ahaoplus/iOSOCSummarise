@@ -14,6 +14,7 @@
 @implementation ZHBlockViewController
 
 - (void)viewDidLoad {
+    self.title = @"Blocks";
     [super viewDidLoad];
     [self test01];
     [self test02];
@@ -22,6 +23,7 @@
     [self test05];
     [self testSelf01];
     [self testBlockTypes];
+    self.knowledgePoints = @"1、block本质就是一个OC对象：它是封装了函数调用以及函数调用环境的OC对象，NSObject ->NSBlock->(__NSGlobalBlock/__NSStackBlock/__NSMallocBlock)->(__NSGlobalBlock__/__NSStackBlock__/__NSMallocBlock__);\n2、变量捕获：auto变量值传递，static变量指针传递，全局变量不会（不需要）被捕获\n3、block根据存储位置的不同分为如下几种：\n的对象类型__NSMallocBlock__引用了self变量\n__NSMallocBlock__引用了外部变量age\n __NSGlobalBlock__未引用任何外部变量\n__NSGlobalBlock__引用了static变量\n__weak在ARC下修饰了block变量：<__NSStackBlock__: 0x7ffee4b60ac0>";
 }
 -(void)test01{
     NSLog(@"---------------------------------------------------------");
@@ -152,11 +154,17 @@
     
     block();
     
-    NSLog(@"%@",[block class]);
-    NSLog(@"%@",[block1 class]);
-    NSLog(@"%@",[block2 class]);
-    NSLog(@"%@",[block3 class]);
-    
+    NSLog(@"%@引用了self变量",[block class]);
+    NSLog(@"%@引用了外部变量age",[block1 class]);
+    NSLog(@"%@未引用任何外部变量",[block2 class]);
+    NSLog(@"%@引用了static变量",[block3 class]);
+    //ARC下默认都是__strong修饰符修饰的，堆栈如果引用了外部变量则会被自动放到堆空间
+    int value = 10;
+    __weak void(^blockA)() = ^{
+    NSLog(@"value: %d",value);
+    };
+    //输出结果
+    NSLog(@"__weak在ARC下修饰了block变量：%@",blockA);
     
     NSLog(@"%@",[[^{
         NSLog(@"block2");

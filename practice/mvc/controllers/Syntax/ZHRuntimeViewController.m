@@ -6,6 +6,7 @@
 //
 
 #import "ZHRuntimeViewController.h"
+#import "TestModel.h"
 typedef enum {
     ZHOptionsFirst = 1<<0,
     ZHOptionsSecond = 1<<2,
@@ -23,8 +24,16 @@ typedef enum {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setOptions:ZHOptionsForth | ZHOptionsFirst | ZHOptionsThird ];
+    [self methodHandle];
 }
 
+/// 消息动态转发
+-(void)methodHandle{
+    TestModel* model1 = [TestModel new];
+    model1.exerciseName = @"艺术体操";
+    [model1 testMethodForwarding];
+}
+//位域使用
 -(void)setOptions:(ZHOptionsEnum)options {
     if (options & ZHOptionsFirst) {
         NSLog(@"contains ZHOptionsFirst");

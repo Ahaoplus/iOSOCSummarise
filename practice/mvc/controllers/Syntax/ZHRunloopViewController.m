@@ -13,12 +13,23 @@
 @interface ZHRunloopViewController ()
 @property(nonatomic,strong)ZHThread* zthread;
 @property(nonatomic,assign,getter=isStoped)BOOL stop;
+@property(nonatomic,strong)NSTimer* timer;
 @end
 
 @implementation ZHRunloopViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self testObservers];
+//    [self performSelector:@selector(testSource0) withObject:nil];
+    //CoreFoundation`__CFRUNLOOP_IS_CALLING_OUT_TO_AN_OBSERVER_CALLBACK_FUNCTION__ + 23
+    [self performSelectorOnMainThread:@selector(testSource0) withObject:nil waitUntilDone:YES];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //CoreFoundation`__CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__
+        [self performSelectorOnMainThread:@selector(testSource0) withObject:nil waitUntilDone:YES];
+    });
+    //CoreFoundation`__CFRUNLOOP_IS_CALLING_OUT_TO_A_TIMER_CALLBACK_FUNCTION__ + 20
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(testTimer) userInfo:nil repeats:YES];
     self.stop = NO;
     // 这样开启一个线程会产生循环引用，这样初始化的话thread会对viewcontroller有强引用
     //self.zthread = [[ZHThread alloc] initWithTarget:self selector:@selector(run) object:nil];
@@ -57,6 +68,15 @@
     [self performSelector:@selector(test) onThread:self.zthread withObject:nil waitUntilDone:YES];
     NSLog(@"%s",__func__);
 }
+-(void)testSource0{
+    NSLog(@"%s%@",__func__,[NSThread currentThread]);
+}
+-(void)testTimer{
+    NSLog(@"%s%@",__func__,[NSThread currentThread]);
+}
+-(void)testObservers{
+    NSLog(@"%s%@",__func__,[NSThread currentThread]);
+}
 -(void)test{
     //在这个线程执行事情，并且这个线程是保活的
     NSLog(@"%s %@",__func__,[NSThread currentThread]);
@@ -83,6 +103,7 @@
 }
 -(void)dealloc{
     NSLog(@"%s",__func__);
+    [_timer fire];//timer并不会结束，你需要调用一个中间对象去解耦
 }
 /*
 #pragma mark - Navigation

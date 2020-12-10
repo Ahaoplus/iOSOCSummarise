@@ -70,6 +70,7 @@
         }else{
             vc = [[UIViewController alloc]init];
         }
+        vc.title = dic[@"title"];
         [self showViewController:vc sender:self];
         
     }

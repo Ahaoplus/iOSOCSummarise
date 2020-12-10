@@ -31,6 +31,9 @@ static int clickCount = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关键字总结";
+    NSString* load = @"load方法在main函数之前执行，父类-子类-分类的方法执行 +[BaseModel load]\n+[Test2Model load]\n+[ZHKeywordsModel load]\n+[BaseModel(Practise) load]\n+[BaseModel(Test) load]\n+[Test2Model(Test2) load]\n+[ZHKeywordsModel(Test) load]\n+[Test2Model(Test) load]\n";
+    NSString* lazy = @"\n1、+[BaseModel(Test) initialize]\n2、 +[ZHKeywordsModel(Test) initialize]\n3、+[TestModel initialize]";
+    self.knowledgePoints = [NSString stringWithFormat:@"%@\n%@",load,lazy];
     [self atomicTest];
     mulStr = [NSMutableString stringWithString:@"我是一个可变字符串："];
     strModel = [ZHKeywordsModel new];

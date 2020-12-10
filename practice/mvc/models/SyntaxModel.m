@@ -20,6 +20,10 @@
               @{@"key":@"ZHRunloopViewController",@"type":@"nib",@"title":@"Runloop",@"icon":@"",@"authCode":@""}
             ]
         },
+        @{@"key":@"newpoint",@"title":@"新特性",@"children":@[
+                    @{@"key":@"UniversalLinkViewController",@"title":@"UniversalLink",@"icon":@"",@"authCode":@""},
+                  ]
+              },
         @{@"key":@"computer-network",@"title":@"计算机网络",@"children":@[
               @{@"key":@"key1-0",@"title":@"HTTP协议",@"icon":@"",@"authCode":@""},
               @{@"key":@"key1-1",@"title":@"HTTPS",@"icon":@"",@"authCode":@""},

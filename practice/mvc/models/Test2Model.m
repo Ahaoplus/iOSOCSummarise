@@ -15,4 +15,7 @@
 +(void)load{
     NSLog(@"%s",__FUNCTION__);
 }
+-(void)testMethodForwarding{
+    NSLog(@"TestModel转发给Test2Model函数调用消息转发成功");
+}
 @end
