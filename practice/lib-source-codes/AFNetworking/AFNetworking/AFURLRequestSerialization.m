@@ -414,6 +414,11 @@ forHTTPHeaderField:(NSString *)field
     return [formData requestByFinalizingMultipartFormData];
 }
 
+
+/// 获取一个往本地写文件的Reques，即下载
+/// @param request 请求
+/// @param fileURL <#fileURL description#>
+/// @param handler <#handler description#>
 - (NSMutableURLRequest *)requestWithMultipartFormRequest:(NSURLRequest *)request
                              writingStreamContentsToFile:(NSURL *)fileURL
                                        completionHandler:(void (^)(NSError *error))handler
@@ -425,7 +430,9 @@ forHTTPHeaderField:(NSString *)field
     NSOutputStream *outputStream = [[NSOutputStream alloc] initWithURL:fileURL append:NO];
     __block NSError *error = nil;
 
+    //向全局队列中添加异步任务
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //在Runloop中进行IO操作
         [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 
@@ -834,7 +841,7 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 
 @end
 
-#pragma mark -
+#pragma mark -  AFMultipartBodyStream
 
 @interface NSStream ()
 @property (readwrite) NSStreamStatus streamStatus;
@@ -890,7 +897,7 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
     return [self.HTTPBodyParts count] == 0;
 }
 
-#pragma mark - NSInputStream
+#pragma mark - NSInputStream  --核心代码
 
 - (NSInteger)read:(uint8_t *)buffer
         maxLength:(NSUInteger)length
@@ -1171,8 +1178,8 @@ typedef enum {
 }
 
 - (BOOL)transitionToNextPhase {
-    if (![[NSThread currentThread] isMainThread]) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+    if (![[NSThread currentThread] isMainThread]) {//当前不是在主线程
+        dispatch_sync(dispatch_get_main_queue(), ^{//改为在主线程执行操作
             [self transitionToNextPhase];
         });
         return YES;

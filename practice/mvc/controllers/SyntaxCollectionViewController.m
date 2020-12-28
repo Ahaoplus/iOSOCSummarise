@@ -9,6 +9,7 @@
 #import "SyntaxCollectionViewCell.h"
 #import "SyntaxModel.h"
 #import "SyntaxCollectionReusableView.h"
+#import "BaseViewController.h"
 @interface SyntaxCollectionViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,/*UICollectionViewDropDelegate,UICollectionViewDragDelegate,*/UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong)NSArray* dataArray;
 @end
@@ -130,9 +131,10 @@ static NSString * const reuseFooterIdentifier = @"CollectionViewFooter";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary* dic = (NSDictionary*)((NSArray*)(self.dataArray[indexPath.section][@"children"])[indexPath.item]);
     if ([NSClassFromString(dic[@"key"]) isSubclassOfClass:[UIViewController class]]) {
-        UIViewController* vc = nil;
+        BaseViewController* vc = nil;
         if(!dic[@"type"]){
-            vc = [[NSClassFromString(dic[@"key"]) alloc] init];
+            vc = NSClassFromString(dic[@"key"]) ? [[NSClassFromString(dic[@"key"]) alloc] init]:[BaseViewController new];
+            
             
         }else if ([@"nib" isEqualToString:dic[@"type"]]){
             vc = [[NSClassFromString(dic[@"key"]) alloc] initWithNibName:dic[@"key"] bundle:nil];
@@ -142,8 +144,16 @@ static NSString * const reuseFooterIdentifier = @"CollectionViewFooter";
             vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:dic[@"key"]];
             
         }else{
-            vc = [[UIViewController alloc]init];
+            vc = [[BaseViewController alloc]init];
         }
+        vc.knowledgePoints = dic[@"url"];
+        vc.title = dic[@"title"];
+        [self showViewController:vc sender:self];
+        
+    }else{
+        BaseViewController* vc = [[BaseViewController alloc]init];
+        vc.knowledgePoints = dic[@"url"];
+        vc.title = dic[@"title"];
         [self showViewController:vc sender:self];
         
     }

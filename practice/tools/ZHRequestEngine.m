@@ -43,7 +43,7 @@ static NSString * POST = @"POST";
     
     //获取AFHTTPSessionManager单例
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
+    //manager.baseURL
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     //new add
     manager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
@@ -135,10 +135,12 @@ static NSString * POST = @"POST";
                 withNeedCatch:(BOOL)needCatch {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
     //new add
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     [manager.requestSerializer setTimeoutInterval:timeoutInterval];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html",@"multipart/form-data",nil];
     [manager.requestSerializer setValue:@"ios" forHTTPHeaderField:@"honyfrom"];
     NSString* tokenID = [[NSUserDefaults standardUserDefaults] objectForKey:@"tokenId"];
@@ -249,7 +251,7 @@ static NSString * POST = @"POST";
     }
     
     [manager POST:urlPath parameters:parameters headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
+        //进度条更新
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         if (needHud == YES) {

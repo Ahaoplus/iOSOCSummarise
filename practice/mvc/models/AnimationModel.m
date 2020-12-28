@@ -10,6 +10,7 @@
 @implementation AnimationModel
 +(NSArray*)getAnimationModels{
     return @[
+        @{@"key":@"key0",@"target":@"ZHGPUViewController",@"title":@"CPU渲染相关",@"icon":@"",@"authCode":@""},
         @{@"key":@"key0",@"target":@"RQShineDemoViewController",@"title":@"CADisplayLink动画字",@"icon":@"",@"authCode":@""},
         @{@"key":@"key5",@"target":@"ZHSDWebImageViewController", @"title":@"SDWebImage",@"icon":@"",@"authCode":@""},
         @{@"key":@"key1",@"target":@"FriendsCircleViewController",@"title":@"朋友圈九宫格",@"icon":@"",@"authCode":@""},

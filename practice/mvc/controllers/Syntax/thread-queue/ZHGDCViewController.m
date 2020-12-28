@@ -15,16 +15,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self threadAndRunloop];
+//    [self threadAndRunloop];
 //    [self testMainqueue];
 //    [self barrier];
 //    [self testSerialSync];
+    //模拟异步耗时操作
 //    [self testSerialAsync];
-    [self testGlobalQueue];
-    [self groupNotify];
+    
+    [self lockUpQueue];//锁死
+//    [self testGlobalQueue];
+//    [self groupNotify];
     //并发队列中执行异步任务
 //    [self testConcurrentAsync];
     // Do any additional setup after loading the view from its nib.
+    [self initKnowladge];
+}
+-(void)initKnowladge{
+    self.knowledgePoints =@"GCD(Grand Central Dispatch)\n\
+    \n\苹果已经不推荐使用 NSThread 来进行并发编程，而是推荐使用 GCD 和 NSOperation，\n\
+    \n\通常情况下，对于串行队列，我们应该自己创建，对于并行队列，就直接使用系统提供的 Default 优先级的 queue。\n\
+    \n\在任务 block 中创建了大量对象，可以考虑在 block 中添加 autorelease pool。尽管每个 queue 自身都会有 autorelease pool 来管理内存，但是 pool 进行 drain 的具体时间是没办法确定的。如果应用对于内存占用比较敏感，可以自己创建 autorelease pool 来进行内存管理。\n\
+    \n\\n\
+    \n\\n\
+    注意，串行队列中加入同步任务会阻塞下一个任务加入到队列中，只有当前任务执行完成才会再做下一个任务，也就是说它忙完一件事才会去想另一件事，\n\不会先生成一个待办列表才一个接一个的做，而是做一件事情，然后写到日记里，然后再做下一件，最后再写下来\n\
+    也即是说我加入一个同步任务，必须要做完才能往我的队列中加入下一个任务\n\串行队列中执行的无论是同步还是异步的任务，这个任务中再在队列中追加同步任务就会造成锁死，异常代码已注释";
 }
 -(void)test01{
     NSLog(@"并发队列-异步任务------1-----");
@@ -64,96 +78,146 @@
  * 对于串行队列，GCD 默认提供了：『主队列（Main Dispatch Queue）』。
  *  1、所有放在主队列中的任务，都会放到主线程中执行。
  *  2、可使用 dispatch_get_main_queue() 方法获得主队列。
+ *
+ *  注意，串行队列中加入同步任务会阻塞下一个任务加入到队列中，只有当前任务执行完成才会再做下一个任务，也就是说它忙完一件事才会去想另一件事，
+ *  不会先生成一个待办列表才一个接一个的做，而是做一件事情，然后写到日记里，然后再做下一件，最后再写下来
+ *  也即是说我加入一个同步任务，必须要做完才能往我的队列中加入下一个任务
+ *
  */
 -(void)testSerialSync {
     // 串行队列的创建方法
-    dispatch_queue_t queueSerial = dispatch_queue_create("test.ahao.queue", DISPATCH_QUEUE_SERIAL);
+    dispatch_queue_t queueSerial = dispatch_queue_create("test.sync.queue", DISPATCH_QUEUE_SERIAL);
     // 同步执行任务创建方法
+    NSLog(@"--------------------------串行队列开始加入同步任务001---------------------------------");
     dispatch_sync(queueSerial, ^{
         // 这里放同步执行任务代码
-        [NSThread sleepForTimeInterval:5];              // 模拟耗时操作
-        NSLog(@"********1、串行队列 同步执行---会阻塞主线程导致点击无效果等一会儿才能有响应%@********",[NSThread currentThread]);      // 打印当前线程
+        [NSThread sleepForTimeInterval:1];              // 模拟耗时操作
+        NSLog(@"********1、串行队列 同步执行---要把这个任务做完才能处理下一个任务%@********",[NSThread currentThread]);      // 打印当前线程
     });
-    
+    NSLog(@"--------------------------串行队列开始加入异步任务000我加入队列的操作被上一个任务的执行给阻塞了但是我不会阻塞我的下一个---------------------------------");
+    dispatch_async(queueSerial, ^{  // 同步执行 + 当前串行队列
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:1];              // 模拟耗时操作
+        NSLog(@"********2、串行队列开始加入异步任务000%@********",[NSThread currentThread]);      // 打印当前线程
+    });
+    NSLog(@"--------------------------串行队列开始加入同步任务002我加入队列的操作没有被上一个任务的执行给阻塞---------------------------------");
     dispatch_sync(queueSerial, ^{  // 同步执行 + 当前串行队列
         // 追加任务 1
-        [NSThread sleepForTimeInterval:5];              // 模拟耗时操作
-        NSLog(@"********2、串行队列中加入同步执行任务---会阻塞主线程导致点击无效果等一会儿才能有响应%@********",[NSThread currentThread]);      // 打印当前线程
+        [NSThread sleepForTimeInterval:1];              // 模拟耗时操作
+        NSLog(@"********3、串行队列中加入同步执行任务---会阻塞主线程导致点击无效果等一会儿才能有响应%@********",[NSThread currentThread]);      // 打印当前线程
+    });
+    NSLog(@"--------------------------串行队列开始加入同步任务003我加入队列也被上一个任务的执行给阻塞了---------------------------------");
+    dispatch_sync(queueSerial, ^{  // 同步执行 + 当前串行队列
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:1];              // 模拟耗时操作
+        NSLog(@"********4、串行队列中加入同步执行任务---会阻塞主线程导致点击无效果等一会儿才能有响应%@********",[NSThread currentThread]);      // 打印当前线程
     });
     
     
 }
 
-//串行队列 异步任务，不会在主线程中执行，而是开新的线程来执行异步任务，但每个任务虽然是异步的但前面的会阻塞后面的
+/**
+ 串行队列 异步任务，
+ 不会在主线程中执行，而是开新的线程来执行所有异步任务，
+ 你把一个个的机器排成一排放在那里这是一件事儿
+ 你把每个机器的开关打开然后他运行，这是另一回事儿，模块的代码全部执行完了之后才执行下一个的，这里面可以再包含一步任务
+ 比喻：把异步任务加入到串行队列中就像是你写了一个待办列表，然后你必须自上而下一个接一个的打勾，这个打勾就是你执行这个任务里的代码，当然这个代码中也能有异步操作，他不会阻塞你执行下面的代码，但你只需要执行它就可以，你执行完了就倒下一个任务
+ 总之，我把所有的异步任务一个接一个的加入到队列中这是不会阻塞的，但是每个异步任务是否开始执行依仗着队列中上一个任务是否执行完
+ */
 -(void)testSerialAsync {
     // 串行队列的创建方法
     dispatch_queue_t queueSerial = dispatch_queue_create("test.ahao.queue", DISPATCH_QUEUE_SERIAL);
     // 异步执行任务创建方法
+    NSLog(@"--------------------------串行队列开始加入异步任务001---------------------------------");
     dispatch_async(queueSerial, ^{
         // 这里放异步执行任务代码
         NSLog(@"1、串行队列 异步执行---开始%@",[NSThread currentThread]);
-        [NSThread sleepForTimeInterval:5];              // 模拟耗时操作
+        [NSThread sleepForTimeInterval:1];              // 模拟耗时操作
         NSLog(@"1、串行队列 异步执行---结束%@",[NSThread currentThread]);      // 打印当前线程
     });
-    
+    NSLog(@"--------------------------串行队列开始加入异步任务002---------------------------------");
     dispatch_async(queueSerial, ^{
         // 这里放异步执行任务代码
         NSLog(@"2、串行队列 异步执行---开始%@",[NSThread currentThread]);
-        [NSThread sleepForTimeInterval:4];              // 模拟耗时操作
+        [NSThread sleepForTimeInterval:1];              // 模拟耗时操作
         NSLog(@"2、串行队列 异步执行---结束%@",[NSThread currentThread]);      // 打印当前线程
     });
-    
+    NSLog(@"--------------------------串行队列开始加入异步任务003---------------------------------");
     dispatch_async(queueSerial, ^{
         // 这里放异步执行任务代码
         NSLog(@"3、串行队列 异步执行---开始%@",[NSThread currentThread]);
-        [NSThread sleepForTimeInterval:8];              // 模拟耗时操作
+        [NSThread sleepForTimeInterval:1];              // 模拟耗时操作
         NSLog(@"3、串行队列 异步执行---结束%@",[NSThread currentThread]);      // 打印当前线程
     });
     
-    //死锁状况1：串行队列中加入 同步任务，同步任务执行的时候又把一个新的同步任务加入到串行队列中
-//    dispatch_sync(queueSerial, ^{    // 异步执行 + 串行队列
-//        [NSThread sleepForTimeInterval:5];
-//        NSLog(@"4、并行队列中加入异步执行任务，任务中又在 串行队列中加入 同步任务---%@",[NSThread currentThread]);      // 打印当前线程
-//        dispatch_sync(queueSerial, ^{  // 同步执行 + 当前串行队列
-//            // 追加任务 1
-//            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-//            NSLog(@"4、串行队列中加入异步执行任务，任务中又有同步 执行串行队列 同步执行---%@",[NSThread currentThread]);      // 打印当前线程
-//        });
-//    });
     
     /**
      串行队列中执行异步任务，异步任务中执行的时候又把一个异步任务加入到了串行队列
-     
      */
+    NSLog(@"--------------------------串行队列开始加入异步任务004---------------------------------");
     dispatch_async(queueSerial, ^{    // 异步执行 + 串行队列
         //[NSThread sleepForTimeInterval:5];
-        NSLog(@"5、串行队列中加入异步执行任务，任务中又有同步 执行串行队列 同步执行---%@",[NSThread currentThread]);      // 打印当前线程
+        NSLog(@"5、串行队列 异步执行---开始%@",[NSThread currentThread]);      // 打印当前线程
+        NSLog(@"--------------------------串行队列开始加入异步任务006---------------------------------");
         dispatch_async(queueSerial, ^{  // 同步执行 + 当前串行队列
             // 追加任务 1
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"5、串行队列中加入异步执行任务，任务中又有同步 执行串行队列 同步执行---%@",[NSThread currentThread]);      // 打印当前线程
+            NSLog(@"7、串行队列中加入异步执行任务，异步任务中又向串行队列中加了一个异步任务，当然它被追加到了最后了---start%@",[NSThread currentThread]);      // 打印当前线程
+            [NSThread sleepForTimeInterval:1];              // 模拟耗时操作
+            NSLog(@"7、串行队列中加入异步执行任务，异步任务中又向串行队列中加了一个异步任务，当然它被追加到了最后了---end%@",[NSThread currentThread]);      // 打印当前线程
+        });
+        NSLog(@"5、串行队列 异步执行---开始%@",[NSThread currentThread]);
+    });
+    NSLog(@"--------------------------串行队列开始加入异步任务005---------------------------------");
+    dispatch_async(queueSerial, ^{    // 异步执行 + 串行队列
+        //
+        NSLog(@"6、串行队列 异步执行---开始%@",[NSThread currentThread]);       // 打印当前线程
+//        [NSThread sleepForTimeInterval:1];
+        NSLog(@"6、串行队列 异步执行---开始%@",[NSThread currentThread]);
+    });
+}
+/*
+ 串行队列中执行的无论是同步还是异步的任务，这个任务中再在队列中追加同步任务就会造成锁死，异常代码已注释
+ */
+-(void)lockUpQueue{
+    // 串行队列的创建方法
+    //1243
+    dispatch_queue_t queueSerial = dispatch_queue_create("test.lock.queue", DISPATCH_QUEUE_SERIAL);
+    NSLog(@"================1=================");
+    dispatch_sync(queueSerial,^{
+        NSLog(@"================2=================");
+        dispatch_async(queueSerial,^{
+            NSLog(@"================3=================");
+        });
+        NSLog(@"================4=================");
+    });
+    NSLog(@"================5=================");
+    /*
+     NSLog(@"1、*****************死锁状况1：串行队列中加入 同步任务，同步任务执行的时候又把一个新的同步任务加入到串行队列中************************");
+    dispatch_sync(queueSerial, ^{    // 异步执行 + 串行队列
+        
+        NSLog(@"2、并行队列中加入异步执行任务，任务中又在 串行队列中加入 同步任务---%@",[NSThread currentThread]);
+        //报错 Thread 1: EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0)
+        dispatch_sync(queueSerial, ^{  // 同步执行 + 当前串行队列
+            // 追加任务 1
+            NSLog(@"3、串行队列中加入异步执行任务，任务中又有同步 执行串行队列 同步执行---%@",[NSThread currentThread]);      // 打印当前线程
+        });
+        NSLog(@"555555555操作结束了我");
+    });
+     */
+    
+    //死锁状况2
+    /*
+    NSLog(@"1、*****************死锁状况2：串行队列中加入 串行队列中执行异步任务，异步任务中执行的时候又把同步任务追加到队列中，这时候这个同步任务是追加在了队列末尾，但是这个异步的完成依赖这个同步任务，这个同步任务又在等异步任务结束************************");
+    dispatch_async(queueSerial, ^{    // 异步执行 + 串行队列
+        NSLog(@"2、串行队列中加入异步执行任务，任务中又有同步 执行串行队列 同步执行---%@",[NSThread currentThread]);      // 打印当前线程
+        dispatch_sync(queueSerial, ^{  // 同步执行 + 当前串行队列
+            // 追加任务 3
+            NSLog(@"3、串行队列中加入异步执行任务，任务中又有同步 执行串行队列 同步执行---%@",[NSThread currentThread]);      // 打印当前线程
         });
     });
-    //死锁状况2
-    /**
-     串行队列中执行异步任务，异步任务中执行的时候又把一
-     
+    //Thread 7: EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0)
+    NSLog(@"4、串行队列中加入异步执行任务，任务中又有同步 执行串行队列 同步执行---%@",[NSThread currentThread]);
      */
-//    dispatch_async(queueSerial, ^{    // 异步执行 + 串行队列
-//        //[NSThread sleepForTimeInterval:5];
-//        NSLog(@"6、串行队列中加入异步执行任务，任务中又有同步 执行串行队列 同步执行---%@",[NSThread currentThread]);      // 打印当前线程
-//        dispatch_sync(queueSerial, ^{  // 同步执行 + 当前串行队列
-//            // 追加任务 1
-//            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-//            NSLog(@"6、串行队列中加入异步执行任务，任务中又有同步 执行串行队列 同步执行---%@",[NSThread currentThread]);      // 打印当前线程
-//        });
-//    });
-    
-    
-    dispatch_async(queueSerial, ^{    // 异步执行 + 串行队列
-        [NSThread sleepForTimeInterval:5];
-        NSLog(@"7、串行队列中加入异步执行任务，任务中又有同步 执行串行队列 同步执行---%@",[NSThread currentThread]);      // 打印当前线程
-    });
 }
 
 /**

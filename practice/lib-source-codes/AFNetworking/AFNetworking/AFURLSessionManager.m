@@ -491,6 +491,10 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
     self.sessionConfiguration = configuration;
 
     self.operationQueue = [[NSOperationQueue alloc] init];
+    /*
+     我们可以通过设置maxConcurrentOperationCount来设置队列的最大并发数，比如当网络为Wi-Fi时设置为6，3G时设置为2：
+     假如maxConcurrentOperationCount的值设为1，可以看作该队列为串行队列，每次只能执行一个任务。不过NSOPerationQueue不是先进先出（FIFO）队列，这点跟dispatch queue有点区别，dispatch queue中的block会按照FIFO的顺序去执行，NSOPerationQueue会根据Operation的状态(是否Ready)以及优先级来确定执行的NSOperation的顺序。
+     */
     self.operationQueue.maxConcurrentOperationCount = 1;
 
     self.responseSerializer = [AFJSONResponseSerializer serializer];

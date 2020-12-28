@@ -21,8 +21,11 @@
     self.title = @"UI和动画";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.backgroundColor =[UIColor whiteColor];
     _dataList = [AnimationModel getAnimationModels];
     [self.tableView reloadData];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -32,6 +35,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    NSArray* array =@[@1,@2,@3,@4,@5,@6,@7,@8,@9];
+    NSArray* array1 =@[@1,@3,@5,@7,@2,@4,@6];
+    [self reOrderArray:array1];
 }
 #pragma mark - Table view data source
 
@@ -49,6 +55,8 @@
     NSDictionary* dic = _dataList[indexPath.row];
     cell.textLabel.text = dic[@"title"];
     cell.textLabel.textColor = [UIColor blackColor];
+    cell.backgroundColor = [UIColor whiteColor];
+//    cell.contentView.backgroundColor = [UIColor whiteColor];
     // Configure the cell...
     
     return cell;
@@ -75,7 +83,57 @@
         
     }
 }
+-(void)reOrderArray:(NSArray*)array {
+    NSMutableArray* m_array = [NSMutableArray arrayWithArray:array];
+    int oddIndex = 0;
+    int evenIndex = 0;
 
+    int lastOddIndex = 0;
+    for(int i = 0;i<m_array.count;i++){
+        int val = [m_array[i] intValue];
+        if(val & 1 ){//val为奇数，无需处理，移动index
+            lastOddIndex = i;
+        }
+        
+    }
+    for(int i = 0;i<m_array.count;i++){
+        int val = [m_array[i] intValue];
+        if(val & 1 ){//val为奇数，无需处理，移动index
+            //ddIndex = i+1;//奇数应当在的位置
+            //evenIndex = oddIndex+1;
+            if (i == lastOddIndex) {
+                return;
+            }
+        }else{
+            oddIndex = i;//遇到偶数，从偶数后面找奇数来替换
+            evenIndex = oddIndex+1;
+            NSNumber* temp;//暂存
+            NSNumber* tempPre = m_array[oddIndex];//暂存当前的偶数
+            
+            while(evenIndex<m_array.count){
+                temp = m_array[evenIndex];//暂存目标
+                if([temp intValue] & 1){//验证目标是否为奇数
+                    m_array[oddIndex] = temp;//把之前的偶数赋值给奇数
+                    m_array[evenIndex] = tempPre;//把奇数放在刚才偶数的位置
+                    if (evenIndex == lastOddIndex) {
+                        return;
+                    }
+                    break;//跳出循环
+                }else{
+                    //是偶数，整体往后挪，暂存被覆盖的数
+                    
+                    m_array[evenIndex] = tempPre;
+                    
+                }
+                tempPre = temp;
+                evenIndex++;
+                
+            }
+        }
+        
+    }
+    NSLog(@"%@",m_array);
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

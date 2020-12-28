@@ -31,21 +31,19 @@
 #endif
 
 /**
- `AFURLSessionManager` creates and manages an `NSURLSession` object based on a specified `NSURLSessionConfiguration` object, which conforms to `<NSURLSessionTaskDelegate>`, `<NSURLSessionDataDelegate>`, `<NSURLSessionDownloadDelegate>`, and `<NSURLSessionDelegate>`.
+ `AFURLSessionManager` 创建并管理 一个 遵从了`<NSURLSessionTaskDelegate>`, `<NSURLSessionDataDelegate>`, `<NSURLSessionDownloadDelegate>`, and `<NSURLSessionDelegate>这些协议的 NSURLSession` object based on a specified `NSURLSessionConfiguration` object,`.
 
  ## Subclassing Notes
-
- This is the base class for `AFHTTPSessionManager`, which adds functionality specific to making HTTP requests. If you are looking to extend `AFURLSessionManager` specifically for HTTP, consider subclassing `AFHTTPSessionManager` instead.
-
- ## NSURLSession & NSURLSessionTask Delegate Methods
-
+子类AFHTTPSessionManager是针对HTTP请求的特殊方法
+ 如果你想针对HTTP对AFURLSessionManager进行扩展，还是考虑用AFHTTPSessionManager来做相应的扩展
+ 
+ NSURLSession & NSURLSessionTask 相关代理方法
  `AFURLSessionManager` implements the following delegate methods:
+  NSURLSessionDelegate`
 
- ### `NSURLSessionDelegate`
-
- - `URLSession:didBecomeInvalidWithError:`
+ - `URLSession:didBecomeInvalidWithError:`              //Session失效
  - `URLSession:didReceiveChallenge:completionHandler:`
- - `URLSessionDidFinishEventsForBackgroundURLSession:`
+ - `URLSessionDidFinishEventsForBackgroundURLSession:`  //结束后台URL会话
 
  ### `NSURLSessionTaskDelegate`
 
@@ -91,7 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AFURLSessionManager : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate, NSSecureCoding, NSCopying>
 
 /**
- The managed session.
+ The managed session.  在h文件中设置readonly，在m文件中可以set
  */
 @property (readonly, nonatomic, strong) NSURLSession *session;
 
@@ -113,6 +111,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The security policy used by created session to evaluate server trust for secure connections. `AFURLSessionManager` uses the `defaultPolicy` unless otherwise specified.
+ 安全策略
  */
 @property (nonatomic, strong) AFSecurityPolicy *securityPolicy;
 
@@ -123,6 +122,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The network reachability manager. `AFURLSessionManager` uses the `sharedManager` by default.
+ 监控网络状态
  */
 @property (readwrite, nonatomic, strong) AFNetworkReachabilityManager *reachabilityManager;
 #endif
@@ -133,21 +133,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The data, upload, and download tasks currently run by the managed session.
+ 各种在被管理的会话中运行中的任务
  */
 @property (readonly, nonatomic, strong) NSArray <NSURLSessionTask *> *tasks;
 
 /**
  The data tasks currently run by the managed session.
+ 数据任务
  */
 @property (readonly, nonatomic, strong) NSArray <NSURLSessionDataTask *> *dataTasks;
 
 /**
  The upload tasks currently run by the managed session.
+ 上传任务
  */
 @property (readonly, nonatomic, strong) NSArray <NSURLSessionUploadTask *> *uploadTasks;
 
 /**
  The download tasks currently run by the managed session.
+ 下载任务
  */
 @property (readonly, nonatomic, strong) NSArray <NSURLSessionDownloadTask *> *downloadTasks;
 

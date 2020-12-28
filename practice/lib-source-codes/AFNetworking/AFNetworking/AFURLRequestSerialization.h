@@ -97,10 +97,12 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestQueryStringSerializationStyle) {
 
 /**
  The string encoding used to serialize parameters. `NSUTF8StringEncoding` by default.
+ 序列化参数的编码方式，默认是utf-8
  */
 @property (nonatomic, assign) NSStringEncoding stringEncoding;
 
 /**
+ 创建的请求是否可以使用移动蜂窝网络
  Whether created requests can use the device’s cellular radio (if present). `YES` by default.
 
  @see NSMutableURLRequest -setAllowsCellularAccess:
@@ -111,6 +113,7 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestQueryStringSerializationStyle) {
  The cache policy of created requests. `NSURLRequestUseProtocolCachePolicy` by default.
 
  @see NSMutableURLRequest -setCachePolicy:
+ 缓存策略：是否使用 本地缓存、服务器缓存等
  */
 @property (nonatomic, assign) NSURLRequestCachePolicy cachePolicy;
 
@@ -118,19 +121,20 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestQueryStringSerializationStyle) {
  Whether created requests should use the default cookie handling. `YES` by default.
 
  @see NSMutableURLRequest -setHTTPShouldHandleCookies:
+ 创建的请求是否使用默认的cookie处理方式
  */
 @property (nonatomic, assign) BOOL HTTPShouldHandleCookies;
 
 /**
  Whether created requests can continue transmitting data before receiving a response from an earlier transmission. `NO` by default
-
+ 在收到来自较早传输的响应之前，创建的请求是否可以继续传输数据。默认为“否”
  @see NSMutableURLRequest -setHTTPShouldUsePipelining:
  */
 @property (nonatomic, assign) BOOL HTTPShouldUsePipelining;
 
 /**
  The network service type for created requests. `NSURLNetworkServiceTypeDefault` by default.
-
+ 请求网络服务的方式：包括：标准传输、后台传输、视频传输、图片传输之类的
  @see NSMutableURLRequest -setNetworkServiceType:
  */
 @property (nonatomic, assign) NSURLRequestNetworkServiceType networkServiceType;
@@ -139,6 +143,7 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestQueryStringSerializationStyle) {
  The timeout interval, in seconds, for created requests. The default timeout interval is 60 seconds.
 
  @see NSMutableURLRequest -setTimeoutInterval:
+ 请求超时的间隔，单位为秒
  */
 @property (nonatomic, assign) NSTimeInterval timeoutInterval;
 
@@ -150,14 +155,16 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestQueryStringSerializationStyle) {
  Default HTTP header field values to be applied to serialized requests. By default, these include the following:
 
  - `Accept-Language` with the contents of `NSLocale +preferredLanguages`
+ 语言相关
  - `User-Agent` with the contents of various bundle identifiers and OS designations
-
+ User-Agent 首部包含了一个特征字符串，用来让网络协议的对端来识别发起请求的用户代理软件的应用类型、操作系统、软件开发商以及版本号。
  @discussion To add or remove default request headers, use `setValue:forHTTPHeaderField:`.
  */
 @property (readonly, nonatomic, strong) NSDictionary <NSString *, NSString *> *HTTPRequestHeaders;
 
 /**
  Creates and returns a serializer with default configuration.
+ 获取一个请求序列化实例
  */
 + (instancetype)serializer;
 
@@ -166,6 +173,7 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestQueryStringSerializationStyle) {
 
  @param field The HTTP header to set a default value for
  @param value The value set as default for the specified header, or `nil`
+ 设置请求的header键值对
  */
 - (void)setValue:(nullable NSString *)value
 forHTTPHeaderField:(NSString *)field;
@@ -176,6 +184,7 @@ forHTTPHeaderField:(NSString *)field;
  @param field The HTTP header to retrieve the default value for
 
  @return The value set as default for the specified header, or `nil`
+ 获取某个key对应的header中设置的值
  */
 - (nullable NSString *)valueForHTTPHeaderField:(NSString *)field;
 
@@ -184,12 +193,14 @@ forHTTPHeaderField:(NSString *)field;
 
  @param username The HTTP basic auth username
  @param password The HTTP basic auth password
+ 设置授权的账户信息
  */
 - (void)setAuthorizationHeaderFieldWithUsername:(NSString *)username
                                        password:(NSString *)password;
 
 /**
  Clears any existing value for the "Authorization" HTTP header.
+ 清楚授权账户信息
  */
 - (void)clearAuthorizationHeader;
 
@@ -215,6 +226,7 @@ forHTTPHeaderField:(NSString *)field;
  Set the a custom method of query string serialization according to the specified block.
 
  @param block A block that defines a process of encoding parameters into a query string. This block returns the query string and takes three arguments: the request, the parameters to encode, and the error that occurred when attempting to encode parameters for the given request.
+ 可以自己处理参数，将它们拼接成一个你想要的字符串，这是对某些特殊情况的处理时用的
  */
 - (void)setQueryStringSerializationWithBlock:(nullable NSString * _Nullable (^)(NSURLRequest *request, id parameters, NSError * __autoreleasing *error))block;
 
@@ -232,7 +244,7 @@ forHTTPHeaderField:(NSString *)field;
  @param parameters The parameters to be either set as a query string for `GET` requests, or the request HTTP body.
  @param error The error that occurred while constructing the request.
 
- @return An `NSMutableURLRequest` object.
+ @return An `NSMutableURLRequest` object.  获取一个普通的NSMutableURLRequest
  */
 - (nullable NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                           URLString:(NSString *)URLString
@@ -240,7 +252,9 @@ forHTTPHeaderField:(NSString *)field;
                                               error:(NSError * _Nullable __autoreleasing *)error;
 
 /**
- Creates an `NSMutableURLRequest` object with the specified HTTP method and URLString, and constructs a `multipart/form-data` HTTP body, using the specified parameters and multipart form data block. See http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4.2
+ Creates an `NSMutableURLRequest` object with the specified HTTP method and URLString, and constructs a
+ 
+ `multipart/form-data`(常用语文件上传) HTTP body, using the specified parameters and multipart form data block. See http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4.2
 
  Multipart form requests are automatically streamed, reading files directly from disk along with in-memory data in a single HTTP body. The resulting `NSMutableURLRequest` object has an `HTTPBodyStream` property, so refrain from setting `HTTPBodyStream` or `HTTPBody` on this request object, as it will clear out the multipart form body stream.
 
@@ -250,7 +264,7 @@ forHTTPHeaderField:(NSString *)field;
  @param block A block that takes a single argument and appends data to the HTTP body. The block argument is an object adopting the `AFMultipartFormData` protocol.
  @param error The error that occurred while constructing the request.
 
- @return An `NSMutableURLRequest` object
+ @return An `NSMutableURLRequest` object 上传文件用
  */
 - (NSMutableURLRequest *)multipartFormRequestWithMethod:(NSString *)method
                                               URLString:(NSString *)URLString
@@ -266,6 +280,7 @@ forHTTPHeaderField:(NSString *)field;
  @param handler A handler block to execute.
 
  @discussion There is a bug in `NSURLSessionTask` that causes requests to not send a `Content-Length` header when streaming contents from an HTTP body, which is notably problematic when interacting with the Amazon S3 webservice. As a workaround, this method takes a request constructed with `multipartFormRequestWithMethod:URLString:parameters:constructingBodyWithBlock:error:`, or any other request with an `HTTPBodyStream`, writes the contents to the specified file and returns a copy of the original request with the `HTTPBodyStream` property set to `nil`. From here, the file can either be passed to `AFURLSessionManager -uploadTaskWithRequest:fromFile:progress:completionHandler:`, or have its contents read into an `NSData` that's assigned to the `HTTPBody` property of the request.
+ 异步下载文件使用
 
  @see https://github.com/AFNetworking/AFNetworking/issues/1398
  */
@@ -279,6 +294,7 @@ forHTTPHeaderField:(NSString *)field;
 
 /**
  The `AFMultipartFormData` protocol defines the methods supported by the parameter in the block argument of `AFHTTPRequestSerializer -multipartFormRequestWithMethod:URLString:parameters:constructingBodyWithBlock:`.
+ 文件等上传的时候可以做一些处理，比如一个表单中需要追加一些文件等情况，AFStreamingMultipartFormData是该protocol的的实现，但是没有暴露出来，只暴露了这个协议，告诉用户可以调用什么方法
  */
 @protocol AFMultipartFormData
 
@@ -347,6 +363,7 @@ forHTTPHeaderField:(NSString *)field;
 
  @param data The data to be encoded and appended to the form data.
  @param name The name to be associated with the specified data. This parameter must not be `nil`.
+ 添加data和对应的name到表单中
  */
 
 - (void)appendPartWithFormData:(NSData *)data
@@ -358,6 +375,7 @@ forHTTPHeaderField:(NSString *)field;
 
  @param headers The HTTP headers to be appended to the form data.
  @param body The data to be encoded and appended to the form data. This parameter must not be `nil`.
+ 添加请求头和请求体到表单中
  */
 - (void)appendPartWithHeaders:(nullable NSDictionary <NSString *, NSString *> *)headers
                          body:(NSData *)body;
@@ -369,6 +387,7 @@ forHTTPHeaderField:(NSString *)field;
 
  @param numberOfBytes Maximum packet size, in number of bytes. The default packet size for an input stream is 16kb.
  @param delay Duration of delay each time a packet is read. By default, no delay is set.
+ 通过设置请求的带宽和延迟时间来提高在弱网环境下上传数据的成功率
  */
 - (void)throttleBandwidthWithPacketSize:(NSUInteger)numberOfBytes
                                   delay:(NSTimeInterval)delay;
