@@ -68,13 +68,16 @@ constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))construct
                 withBlock:(BlockResponse) block
            withErrorBlock:(BlockResponseError) errBlock;
 
+/**
+ GET方法
+ */
 + (void)requestByGetTransform:(NSString *)urlPath
                withParameters:(NSDictionary *) parameters
                     withBlock:(BlockResponse) block
                withErrorBlock:(BlockResponseError) errBlock
                   withNeedHud:(BOOL)needHud
                 withNeedCatch:(BOOL)needCatch
-          ResponseKeyDisorder:(BOOL)disorder;
+          responseKeyDisorder:(BOOL)disorder;
 
 @end
 

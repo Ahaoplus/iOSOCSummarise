@@ -75,6 +75,8 @@
     NSLog(@"%s%@",__func__,[NSThread currentThread]);
 }
 -(void)testObservers{
+//    [[NSRunLoop currentRunLoop] addObserver:self forKeyPath:<#(nonnull NSString *)#> options:<#(NSKeyValueObservingOptions)#> context:nil];
+    [NSThread sleepForTimeInterval:2];
     NSLog(@"%s%@",__func__,[NSThread currentThread]);
 }
 -(void)test{

@@ -14,7 +14,7 @@
 
 #import <objc/runtime.h>
 #import "UIViewController+Tracking.h"
-
+// Objective-C
 @implementation UIViewController (Tracking)
 
 /*
@@ -53,7 +53,7 @@
         // ...
         // Method originalMethod = class_getClassMethod(class, originalSelector);
         // Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
-
+        // 如果originalSelector本身就存在实现则添加不会成功
         BOOL didAddMethod =
             class_addMethod(class,
                 originalSelector,
@@ -61,11 +61,14 @@
                 method_getTypeEncoding(swizzledMethod));
 
         if (didAddMethod) {
+            //如果把自定义的Method的实现和函数签名添加到originalSelector
             class_replaceMethod(class,
                 swizzledSelector,
-                method_getImplementation(originalMethod),
-                method_getTypeEncoding(originalMethod));
+                method_getImplementation(originalMethod),//method_getImplementation(swizzledMethod),
+                method_getTypeEncoding(originalMethod));//method_getTypeEncoding(swizzledMethod));
         } else {
+            //交换实现方法：VC调用viewWillAppear的时候会跑到xxx_viewWillAppear实现上来
+            //xxx_viewWillAppear中必须再调用xxx_viewWillAppear方法，然后就会调用到viewWillAppear
             method_exchangeImplementations(originalMethod, swizzledMethod);
         }
     });

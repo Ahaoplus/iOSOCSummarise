@@ -43,8 +43,8 @@ int age(id self ,SEL _cmd){
 +(BOOL)resolveInstanceMethod:(SEL)sel
 {
     if(sel == @selector(setAge:)){
-        class_addMethod([self class], sel, (IMP)setAge, "v@:i");
-        return  YES;
+//        method_getTypeEncoding(<#Method  _Nonnull m#>)
+        return class_addMethod([self class], sel, (IMP)setAge, "v@:i");
     }else if (sel == @selector(age)){
         class_addMethod([self class], sel, (IMP)age, "i@:v");
         return  YES;

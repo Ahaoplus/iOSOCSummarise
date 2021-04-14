@@ -22,8 +22,9 @@ static int clickCount = 1;
     UILabel* labelAssign;
     UILabel* labelWeak;
 }
-@property(atomic,assign)NSInteger count;
+@property(atomic,assign)NSInteger count;//atomic只能保证getter和setter内部操作是线程安全的，它并不能保证属性使用过程中是线程安全的，
 @property(nonatomic,assign)NSInteger number;
+@property(nonatomic,strong)CADisplayLink* displayLink;
 @end
 
 @implementation ZHKeywordsViewController
@@ -86,6 +87,14 @@ static int clickCount = 1;
     model1.exerciseName = @"艺术体操";
     NSLog(@"%@",model1.exerciseName);
     [Test2Model new];
+    
+    [self testCopy];
+}
+-(void)display{
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayAction)];
+}
+-(void)displayAction{
+    NSLog(@"%s",__func__);
 }
 -(void)atomicTest{
     self.count = 0;
@@ -176,6 +185,14 @@ static int clickCount = 1;
     labelStrong.text = strModel.strStrong;
     labelAssign.text = strModel.strAssgin;
     labelWeak.text = strModel.strWeak;
+}
+-(void)testCopy{
+    NSArray* array1 = @[@1,@2];
+    id mulObj = [array1 mutableCopy];//只是深拷贝，但是并不会产生multi对象
+    if ([mulObj isMemberOfClass:[NSMutableArray class]]) {
+        [mulObj addObject:@3];
+    }
+    NSLog(@"mulObj:%p-%@，array1：%p-%@,&mulObj:%p，&array1：%p",mulObj,mulObj,array1,array1,&mulObj,array1);
 }
 -(void)treeDateTreePrint:(NSArray*)dataArray{
     NSArray* treeData = [self treeData];

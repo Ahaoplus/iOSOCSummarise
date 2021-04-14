@@ -27,6 +27,9 @@
 #import <objc/runtime.h>
 #import "ZHOOViewController.h"
 #import "UITextView+Utils.h"
+#import "ZHObjModel.h"
+typedef void(^testSWBlock)(void);
+
 #ifdef DEBUG
 static NSString* const environmentName = @"测试环境";
 #elif PRERELEASE
@@ -59,6 +62,7 @@ static NSString * const contentStr = @"1、@property 语法糖，自动实现get
     NSString* _isName;
 }
 @property(readwrite)NSString* pageDescription;
+@property (nonatomic,copy)testSWBlock testBlock;
 @end
 
 @implementation ZHOOViewController
@@ -77,8 +81,11 @@ static NSString * const contentStr = @"1、@property 语法糖，自动实现get
     [self addObserver:self forKeyPath:@"pageDescription" options:NSKeyValueObservingOptionNew context:nil];
     
     [self printAllMethodOfClass:[self class]];
-    
-    /*NSKVONotifying_ZHOOViewController 动态生成的类继承自 ZHOOViewController
+    [self testStrongWeak];
+    [self arcTest01];
+    [self doSomething];
+    /*笔记：
+     NSKVONotifying_ZHOOViewController 动态生成的类继承自 ZHOOViewController
      -------------------------------------------
      2020-10-25 13:41:29.762412+0800 practice[89683:445440]  NSKVONotifying_ZHOOViewController setPageDescription:
      2020-10-25 13:41:29.762858+0800 practice[89683:445440]  NSKVONotifying_ZHOOViewController class
@@ -148,9 +155,13 @@ static NSString * const contentStr = @"1、@property 语法糖，自动实现get
     
     
 }
-- (IBAction)action2:(id)sender {
-    self.pageDescription = nil;
++(void)testClassMethod{
     
+}
+- (IBAction)action2:(id)sender {
+    
+    self.pageDescription = nil;
+    [self performSelector:@selector(testClassMethod)];
     UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 200, 100, 100)];
     [view1 setBounds:CGRectMake(-20, -20, 100, 100)];
     [view1 setBackgroundColor:[UIColor redColor]];
@@ -201,6 +212,67 @@ static NSString * const contentStr = @"1、@property 语法糖，自动实现get
      */
     
     self.pageDescription = [NSString stringWithFormat:@"[self setValue:environmentName forKey:]触发了KVO %@",[self valueForKey:@"name"]];
+}
+/**
+ 根据 Apple的文档 ，使用场景如下：
+ 1.写基于命令行的的程序时，就是没有UI框架，如AppKit等Cocoa框架时。
+ 2.写循环，循环里面包含了大量临时创建的对象。（本文的例子）
+ 3.创建了新的线程。（非Cocoa程序创建线程时才需要）
+ 4.长时间在后台运行的任务。
+ 
+ *加了@autoreleasepool每一轮循环的大部分数据都被释放掉。
+ *没加@autoreleasepool只有小部分被释放，整体的内存一直在猛增。知道一次Runloop结束
+
+ 但是需要注意的是，如果for里面，有array的添加能使得Reference Counting增加的操作，那么释放时间就会出问题，会发现@autoreleasepool失去了作用，比如最后这种情况。
+
+
+     NSMutableArray * Arr = [NSMutableArray array];
+     for (int i = 0; i < count; i++) {
+         @autoreleasepool {
+             NSNumber * numTep = [NSNumber numberWithInt:i];
+             [Arr addObject:numTep];
+         }
+     }
+
+ 作者：DoubleShawn
+ 链接：https://www.jianshu.com/p/733447ca44ae
+ 来源：简书
+ 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+ */
+-(void)arcTest01{
+    NSString* str = nil;
+    for (int i = 0; i<1000000; i++) {
+        @autoreleasepool {//如果去掉@autoreleasepool 内存会瞬间升高才下降，
+            NSString* str1 = @"adfasdfasdfasdfasdfasdfsdfasdfasdfasdfasdfasdf";
+            NSNumber* num1 = @1000;
+            str = [NSString stringWithFormat:@"%@%@",str1,num1];
+        }
+        
+    }
+//下面这种用法没什么用哦
+//    @autoreleasepool {
+//        for (int i = 0; i<1000000; i++) {
+//            NSString* str1 = @"adfasdfasdfasdfasdfasdfsdfasdfasdfasdfasdfasdf";
+//            NSNumber* num1 = @1000;
+//            str = [NSString stringWithFormat:@"%@%@",str1,num1];
+//
+//        }
+//    }
+    NSLog(@"循环结束了。。。");
+}
+-(void)testStrongWeak{
+    ZHObjModel* obj = [[ZHObjModel alloc]init];
+    
+    __weak ZHObjModel* weakObj = obj;
+    
+    self.testBlock = ^(){
+        __strong typeof(obj) strongSelf = weakObj;
+        [weakObj sayHello];
+        [strongSelf sayHello];
+    };
+}
+-(void)doSomething{
+    self.testBlock();
 }
 -(void)dealloc{
     [self removeObserver:self forKeyPath:@"pageDescription" context:nil];

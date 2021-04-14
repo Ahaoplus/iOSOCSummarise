@@ -108,13 +108,16 @@
         }
 
         __weak __typeof(self)weakSelf = self;
+        NSLog(@"******************AFNetworking %s self is %@*******************************",__func__,self);
         NSUUID *downloadID = [NSUUID UUID];
         AFImageDownloadReceipt *receipt;
         receipt = [downloader
                    downloadImageForURLRequest:urlRequest
                    withReceiptID:downloadID
                    success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull responseObject) {
-                       __strong __typeof(weakSelf)strongSelf = weakSelf;
+                       __strong __typeof(weakSelf) strongSelf = weakSelf;//此处应该用__strong,否则weakSelf可能为空对象
+                        NSLog(@"strongSelf is%@,weakSelf is %@",strongSelf,weakSelf);
+            //[NSThread sleepForTimeInterval:2];              // 模拟耗时操作
                        if ([strongSelf.af_activeImageDownloadReceipt.receiptID isEqual:downloadID]) {
                            if (success) {
                                success(request, response, responseObject);
@@ -126,7 +129,8 @@
 
                    }
                    failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
-                       __strong __typeof(weakSelf)strongSelf = weakSelf;
+                    __strong __typeof(weakSelf) strongSelf = weakSelf;
+                    NSLog(@"strongSelf is%@,weakSelf is %@",strongSelf,weakSelf);
                         if ([strongSelf.af_activeImageDownloadReceipt.receiptID isEqual:downloadID]) {
                             if (failure) {
                                 failure(request, response, error);
@@ -153,7 +157,9 @@
 - (BOOL)isActiveTaskURLEqualToURLRequest:(NSURLRequest *)urlRequest {
     return [self.af_activeImageDownloadReceipt.task.originalRequest.URL.absoluteString isEqualToString:urlRequest.URL.absoluteString];
 }
-
+-(void)dealloc{//会调用三次
+    NSLog(@"******************AFNetworking %s self is %@*******************************",__func__,self);
+}
 @end
 
 #endif

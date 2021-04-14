@@ -7,7 +7,6 @@
 
 #import "ZHRequestEngine.h"
 #import "MBProgressHUD.h"
-
 #import "UIViewController+Find.h"
 
 static NSUInteger timeoutInterval = 30; //网络请求超时时间
@@ -39,7 +38,7 @@ static NSString * POST = @"POST";
                withErrorBlock:(BlockResponseError) errBlock
                   withNeedHud:(BOOL)needHud
                 withNeedCatch:(BOOL)needCatch
-          ResponseKeyDisorder:(BOOL)disorder{
+          responseKeyDisorder:(BOOL)disorder{
     
     //获取AFHTTPSessionManager单例
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -134,96 +133,8 @@ static NSString * POST = @"POST";
                   withNeedHud:(BOOL)needHud
                 withNeedCatch:(BOOL)needCatch {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [self requestByGetTransform:urlPath withParameters:parameters withBlock:block withErrorBlock:errBlock withNeedHud:needHud withNeedCatch:needCatch responseKeyDisorder:YES];
     
-    //new add
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    [manager.requestSerializer setTimeoutInterval:timeoutInterval];
-    
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html",@"multipart/form-data",nil];
-    [manager.requestSerializer setValue:@"ios" forHTTPHeaderField:@"honyfrom"];
-    NSString* tokenID = [[NSUserDefaults standardUserDefaults] objectForKey:@"tokenId"];
-    if(tokenID)
-    {
-        
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"iPlanetDirectoryPro=%@",tokenID] forHTTPHeaderField:@"Cookie"];
-        
-    }
-    if (needHud == YES) {
-        [MBProgressHUD showHUDAddedTo:[UIViewController find_currentViewController].view animated:YES];
-    }
-    
-    [manager GET:urlPath parameters:parameters headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        if (needHud == YES) {
-            [MBProgressHUD hideAllHUDsForView:[UIViewController find_currentViewController].view animated:YES];
-        }
-        
-        if (block != nil) {
-           
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                if ([responseObject isKindOfClass:[NSDictionary class]]&&[[responseObject valueForKey:@"code"] integerValue]==401) {
-                    //跳到登录页面，提示登录已过期
-                    
-                }else{//做其它处理
-                    block(task,responseObject);
-                }
-
-            }else {
-                
-                if ([urlPath containsString:@"GetAction"]||[urlPath containsString:@"getAction"]) {
-                    
-                    block(task,responseObject);
-                }else {
-                    NSString *aString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                    
-                    if ([aString containsString:@"\'UserIsAssist\'"]) {
-                        aString =  [aString stringByReplacingOccurrencesOfString:@"\'UserIsAssist\'" withString:@"\"UserIsAssist\""];
-                        aString = [aString lowercaseString];
-                    }
-                    
-                    NSData *jsonData = [aString dataUsingEncoding:NSUTF8StringEncoding];
-                    NSError *err;
-                    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                        options:NSJSONReadingMutableContainers
-                                                                          error:&err];
-                    if ([responseObject isKindOfClass:[NSDictionary class]]&&[[responseObject valueForKey:@"code"] integerValue]==401) {
-                        //跳到登录页面，提示登录已过期
-                       
-                        
-                    }else{//做其它处理
-                        block(task,dic);
-                    }
-                }
-            }
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (needHud == YES) {
-            [MBProgressHUD hideAllHUDsForView:[UIViewController find_currentViewController].view animated:YES];
-        }
-        
-        //        if (needCatch == YES) {
-        //            if ([SDJSONDatabase readCatch:parameters andUrl:urlString] == nil) {
-        //                if (errBlock != nil) {
-        //                    errBlock(task,error);
-        //                }
-        //            }else {
-        //                if (block != nil) {
-        //                    [SDJSONDatabase createDatabase];
-        //                    block(task,[SDJSONDatabase readCatch:parameters andUrl:urlString]);
-        //                }
-        //            }
-        //        }else {
-        if (errBlock != nil) {
-            
-            errBlock(task,error);
-            //            }
-        }
-    }];
 }
 
 +(void)requestByPostTransform:(NSString *) urlPath

@@ -109,17 +109,18 @@
 
 - (void)addImage:(UIImage *)image withIdentifier:(NSString *)identifier {
     dispatch_barrier_async(self.synchronizationQueue, ^{
+        //生成图片cache
         AFCachedImage *cacheImage = [[AFCachedImage alloc] initWithImage:image identifier:identifier];
-
+        //获取identifier对应的cache
         AFCachedImage *previousCachedImage = self.cachedImages[identifier];
-        if (previousCachedImage != nil) {
+        if (previousCachedImage != nil) {//如果获取的previousCachedImage不为空则将当前用的内存空间减去previousCachedImage所占空间
             self.currentMemoryUsage -= previousCachedImage.totalBytes;
         }
-
+        //重新设置identifier对应的cacheImage
         self.cachedImages[identifier] = cacheImage;
         self.currentMemoryUsage += cacheImage.totalBytes;
     });
-
+    //清理内存空间：将过期的缓存清除
     dispatch_barrier_async(self.synchronizationQueue, ^{
         if (self.currentMemoryUsage > self.memoryCapacity) {
             UInt64 bytesToPurge = self.currentMemoryUsage - self.preferredMemoryUsageAfterPurge;

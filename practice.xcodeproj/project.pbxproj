@@ -226,6 +226,7 @@
 		9495B14A2560DA9300121954 /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9495B1412560DA9300121954 /* AFImageDownloader.m */; };
 		949A66F1251B4F7F00555574 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 949A66F0251B4F7F00555574 /* BaseModel.m */; };
 		949A66F6251B4FB500555574 /* 笔记.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 949A66F5251B4FB500555574 /* 笔记.rtfd */; };
+		94B7216D2614A33E008F898F /* ZHObjModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B7216C2614A33E008F898F /* ZHObjModel.m */; };
 		94CB37EE2549AA340016D410 /* ZHRuntimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB37EC2549AA340016D410 /* ZHRuntimeViewController.m */; };
 		94CB37EF2549AA340016D410 /* ZHRuntimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB37ED2549AA340016D410 /* ZHRuntimeViewController.xib */; };
 		94CB37FF2549BD9D0016D410 /* UIView+ZHVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB37FE2549BD9D0016D410 /* UIView+ZHVC.m */; };
@@ -269,6 +270,7 @@
 		94ED506B259981A400AF399A /* ZHFileManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94ED5069259981A400AF399A /* ZHFileManagerViewController.xib */; };
 		94ED507125999F7600AF399A /* ZHGPUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94ED507025999F7600AF399A /* ZHGPUViewController.m */; };
 		94ED50772599AD0800AF399A /* UIImage+CircleCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 94ED50762599AD0800AF399A /* UIImage+CircleCorner.m */; };
+		94ED50802599CDCB00AF399A /* ZHBlockSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94ED507F2599CDCB00AF399A /* ZHBlockSubViewController.m */; };
 		94FF6A9E252F29FB00BE99EB /* UIViewController+Normal.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FF6A9D252F29FB00BE99EB /* UIViewController+Normal.m */; };
 		94FF6AA4252F2A1F00BE99EB /* UIViewController+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FF6AA3252F2A1F00BE99EB /* UIViewController+Attributes.m */; };
 		94FF6AAB252F32F000BE99EB /* ZHOOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FF6AA9252F32F000BE99EB /* ZHOOViewController.m */; };
@@ -812,6 +814,8 @@
 		949A66EF251B4F7F00555574 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		949A66F0251B4F7F00555574 /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		949A66F5251B4FB500555574 /* 笔记.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "笔记.rtfd"; sourceTree = "<group>"; };
+		94B7216B2614A33E008F898F /* ZHObjModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHObjModel.h; sourceTree = "<group>"; };
+		94B7216C2614A33E008F898F /* ZHObjModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHObjModel.m; sourceTree = "<group>"; };
 		94CB37EB2549AA340016D410 /* ZHRuntimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHRuntimeViewController.h; sourceTree = "<group>"; };
 		94CB37EC2549AA340016D410 /* ZHRuntimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHRuntimeViewController.m; sourceTree = "<group>"; };
 		94CB37ED2549AA340016D410 /* ZHRuntimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZHRuntimeViewController.xib; sourceTree = "<group>"; };
@@ -892,6 +896,8 @@
 		94ED507025999F7600AF399A /* ZHGPUViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHGPUViewController.m; sourceTree = "<group>"; };
 		94ED50752599AD0800AF399A /* UIImage+CircleCorner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+CircleCorner.h"; sourceTree = "<group>"; };
 		94ED50762599AD0800AF399A /* UIImage+CircleCorner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CircleCorner.m"; sourceTree = "<group>"; };
+		94ED507E2599CDCB00AF399A /* ZHBlockSubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHBlockSubViewController.h; sourceTree = "<group>"; };
+		94ED507F2599CDCB00AF399A /* ZHBlockSubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHBlockSubViewController.m; sourceTree = "<group>"; };
 		94FF6A9C252F29FB00BE99EB /* UIViewController+Normal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Normal.h"; sourceTree = "<group>"; };
 		94FF6A9D252F29FB00BE99EB /* UIViewController+Normal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Normal.m"; sourceTree = "<group>"; };
 		94FF6AA2252F2A1F00BE99EB /* UIViewController+Attributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Attributes.h"; sourceTree = "<group>"; };
@@ -2007,8 +2013,6 @@
 		94DC9EC7251A142200EB27A8 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				949A66EF251B4F7F00555574 /* BaseModel.h */,
-				949A66F0251B4F7F00555574 /* BaseModel.m */,
 				949A66F5251B4FB500555574 /* 笔记.rtfd */,
 				94045853252DB31F00266012 /* SyntaxModel.h */,
 				94045854252DB31F00266012 /* SyntaxModel.m */,
@@ -2028,6 +2032,8 @@
 				9461F8182582251D0079091C /* UniversalLinkViewController.h */,
 				9461F8192582251D0079091C /* UniversalLinkViewController.m */,
 				9461F81A2582251D0079091C /* UniversalLinkViewController.xib */,
+				94B7216B2614A33E008F898F /* ZHObjModel.h */,
+				94B7216C2614A33E008F898F /* ZHObjModel.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -2056,6 +2062,8 @@
 		94DC9ED4251A1D1C00EB27A8 /* base-class */ = {
 			isa = PBXGroup;
 			children = (
+				949A66EF251B4F7F00555574 /* BaseModel.h */,
+				949A66F0251B4F7F00555574 /* BaseModel.m */,
 				94DC9ED5251A1D3300EB27A8 /* BaseViewController.h */,
 				94DC9ED6251A1D3300EB27A8 /* BaseViewController.m */,
 				94DC9EDE251A1D5A00EB27A8 /* BaseView.h */,
@@ -2109,6 +2117,8 @@
 				94ED5067259981A400AF399A /* ZHFileManagerViewController.h */,
 				94ED5068259981A400AF399A /* ZHFileManagerViewController.m */,
 				94ED5069259981A400AF399A /* ZHFileManagerViewController.xib */,
+				94ED507E2599CDCB00AF399A /* ZHBlockSubViewController.h */,
+				94ED507F2599CDCB00AF399A /* ZHBlockSubViewController.m */,
 			);
 			path = "oc-base";
 			sourceTree = "<group>";
@@ -2457,11 +2467,13 @@
 				9461F9D925824E2D0079091C /* FSCalendarConstants.m in Sources */,
 				9461F96525824E2D0079091C /* SDAnimatedImage.m in Sources */,
 				9461FA4B258251FD0079091C /* IQBarButtonItem.m in Sources */,
+				94ED50802599CDCB00AF399A /* ZHBlockSubViewController.m in Sources */,
 				9475708D25616AD60096D111 /* View+MASAdditions.m in Sources */,
 				9428FAA72577BB5300BBBD33 /* RQShineDemoViewController.m in Sources */,
 				94CB380E2549C0FB0016D410 /* ZHUIButton.m in Sources */,
 				9461F99725824E2D0079091C /* SDInternalMacros.m in Sources */,
 				947570A725616AD60096D111 /* FMResultSet.m in Sources */,
+				94B7216D2614A33E008F898F /* ZHObjModel.m in Sources */,
 				9461F9D325824E2D0079091C /* FSCalendarStickyHeader.m in Sources */,
 				9475708925616AD60096D111 /* MASCompositeConstraint.m in Sources */,
 				947570BA25616AD60096D111 /* MJRefreshHeader.m in Sources */,
@@ -2681,6 +2693,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CustomProductName = "AhaoLX-Sit";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = CWY6VY3U8W;
 				INFOPLIST_FILE = practice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2850,6 +2863,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CustomProductName = "AhaoLX-Dev";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = CWY6VY3U8W;
 				INFOPLIST_FILE = practice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

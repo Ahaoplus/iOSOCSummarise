@@ -29,6 +29,42 @@
 //    [self testConcurrentAsync];
     // Do any additional setup after loading the view from its nib.
     [self initKnowladge];
+    [self semaphoreTest];
+}
+-(void)semaphoreTest{
+    dispatch_group_t group = dispatch_group_create();
+    //方法接收一个long类型的参数, 返回一个dispatch_semaphore_t类型的信号量，值为传入的参数
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(10);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+    for (int i = 0; i < 100; i++) {
+        //接收一个信号和时间值，若信号的信号量为0，则会阻塞当前线程，直到信号量大于0或者经过输入的时间值；
+        //若信号量大于0，则会使信号量减1并返回，程序继续住下执行
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_group_async(group, queue, ^{
+            NSLog(@"%i",i);
+            sleep(i<10? i:i/10);
+            //当有线程之行结束之后会发送一个信号，使信号量加1然后就又可以执行了
+            dispatch_semaphore_signal(semaphore);
+        });
+    }
+    
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    
+    //线程同步：加锁信号量初始值为1，wait减一，阻塞其他进程的执行，下面执行完了之后发信号才能解锁
+    dispatch_queue_t queue2 = dispatch_get_global_queue(0, 0);
+    dispatch_semaphore_t semaphore2 = dispatch_semaphore_create(1);
+            
+    for (int i = 0; i < 100; i++) {
+         dispatch_async(queue2, ^{
+              // 相当于加锁
+              dispatch_semaphore_wait(semaphore2, DISPATCH_TIME_FOREVER);
+             NSLog(@"i = %d semaphore = %@", i, semaphore2);
+              // 相当于解锁
+              dispatch_semaphore_signal(semaphore2);
+          });
+    }
+    
 }
 -(void)initKnowladge{
     self.knowledgePoints =@"GCD(Grand Central Dispatch)\n\

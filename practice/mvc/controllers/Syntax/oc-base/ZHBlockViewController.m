@@ -7,8 +7,11 @@
 
 #import "ZHBlockViewController.h"
 #import "BaseModel.h"
+#import "UIImageView+AFNetworking.h"
 @interface ZHBlockViewController ()
-
+{
+    id blockTool;// 知识点
+}
 @end
 
 @implementation ZHBlockViewController
@@ -16,6 +19,7 @@
 - (void)viewDidLoad {
     self.title = @"Blocks";
     [super viewDidLoad];
+    blockTool = [NSObject new];
     [self test01];
     [self test02];
     [self test03];
@@ -23,8 +27,21 @@
     [self test05];
     [self testSelf01];
     [self testBlockTypes];
-    self.knowledgePoints = @"1、block本质就是一个OC对象：它是封装了函数调用以及函数调用环境的OC对象，NSObject ->NSBlock->(__NSGlobalBlock/__NSStackBlock/__NSMallocBlock)->(__NSGlobalBlock__/__NSStackBlock__/__NSMallocBlock__);\n2、变量捕获：auto变量值传递，static变量指针传递，全局变量不会（不需要）被捕获\n3、block根据存储位置的不同分为如下几种：\n的对象类型__NSMallocBlock__引用了self变量\n__NSMallocBlock__引用了外部变量age\n __NSGlobalBlock__未引用任何外部变量\n__NSGlobalBlock__引用了static变量\n__weak在ARC下修饰了block变量：<__NSStackBlock__: 0x7ffee4b60ac0>";
+    [self keyWorksTest];
+    self.knowledgePoints = @"1、block本质就是一个OC对象：它是封装了函数调用以及函数调用环境的OC对象\n，\
+    NSObject ->NSBlock->(__NSGlobalBlock/__NSStackBlock/__NSMallocBlock)->(__NSGlobalBlock__/__NSStackBlock__/__NSMallocBlock__);\
+    \n2、变量捕获：auto变量值传递，static变量指针传递，全局变量不会（不需要）被捕获\
+    \n3、block根据存储位置的不同分为如下几种：\
+    \n的对象类型__NSMallocBlock__引用了self变量\
+    \n__NSMallocBlock__引用了外部变量age\n \
+    __NSGlobalBlock__未引用任何外部变量\n \
+    __NSGlobalBlock__引用了static变量\n \
+    __weak在ARC下修饰了block变量：<__NSStackBlock__: 0x7ffee4b60ac0> \
+    \n4、解决循环引用可以用__weak（自动nil）和__unsafe_unretained（指针不会变nil，不安全）关键字；还有就是__block也可以解决循环引用问题，三角形强引用，在block中置空，因为__block会给那个变量包一层struct\
+    \n5、__block用来修饰局部变量，把值传递改成引用传递\
+    \nblock中需要修改MutableArray是不需要加__block";
 }
+
 -(void)test01{
     NSLog(@"---------------------------------------------------------");
     int age = 10;//有默认的auto未显式写出 传一个引用地址
@@ -79,7 +96,6 @@
     
     NSLog(@"方法：%s age is %d &age is %p",__FUNCTION__,age,&age);
 }
-
 
 -(void)test05{
     NSLog(@"---------------------------------------------------------");
@@ -174,7 +190,37 @@
         
     } class]);
 }
-
+/**
+ * __block修饰局部object
+ * __weak
+ * __strong
+ */
+-(void)keyWorksTest{
+    NSLog(@"-------------------------keyWorksTest--------------------------------");
+    __block UIImage* image = nil;//在block中改变局部变量必须得加block，尤其是你修改对象的话不加直接编译不通过
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10,100,200,200)];
+    
+    [self.view addSubview:imageView];
+    
+    __weak typeof(self) weakSelf = self;
+    BaseModel* model = [BaseModel new];
+    void (^block)(void)=^{
+        image = [UIImage imageNamed:@"蜘蛛侠落地"];
+        model.name = @"去你大爷的";
+        //model = nil; 可以改变auto的属性值，但是不能改变指针本身
+        __strong typeof(self) strongSelf = weakSelf;
+        NSLog(@"方法：%s ,self is %p-%@ ，self是局部变量,strongSelf is %p-%@ ，self是局部变量,weakSelf is %p-%@ ，self是局部变量,blockTool is %@",__FUNCTION__,self,self,strongSelf,strongSelf,weakSelf,weakSelf,strongSelf->blockTool);
+    };
+    [imageView setImage:image];
+    NSLog(@"model.name is %@",model.name);
+    block();
+    NSLog(@"model.name is %@",model.name);
+    [imageView setImageWithURL:[NSURL URLWithString:@"http://172.16.17.48:8080/IMG_4577.JPG"]];
+    
+    [imageView removeFromSuperview];
+    
+}
 -(void)dealloc{
     NSLog(@"方法：%s",__FUNCTION__);
 }
