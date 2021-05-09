@@ -44,7 +44,9 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
 - (void)setSd_imageProgress:(NSProgress *)sd_imageProgress {
     objc_setAssociatedObject(self, @selector(sd_imageProgress), sd_imageProgress, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
+/**
+ 设置图片核心代码
+ */
 - (void)sd_internalSetImageWithURL:(nullable NSURL *)url
                   placeholderImage:(nullable UIImage *)placeholder
                            options:(SDWebImageOptions)options

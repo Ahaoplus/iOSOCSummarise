@@ -11,6 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BaseModel : NSObject
 @property(nonatomic,copy)NSString* name;
+@property(nonatomic,copy)BaseModel* singleChild;
+
+-(void)testCopy;
 @end
 
 NS_ASSUME_NONNULL_END

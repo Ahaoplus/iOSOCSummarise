@@ -241,11 +241,13 @@ static NSString * const contentStr = @"1、@property 语法糖，自动实现get
  */
 -(void)arcTest01{
     NSString* str = nil;
-    for (int i = 0; i<1000000; i++) {
+    for (int i = 0; i<10; i++) {
         @autoreleasepool {//如果去掉@autoreleasepool 内存会瞬间升高才下降，
             NSString* str1 = @"adfasdfasdfasdfasdfasdfsdfasdfasdfasdfasdfasdf";
             NSNumber* num1 = @1000;
             str = [NSString stringWithFormat:@"%@%@",str1,num1];
+            NSRunLoop* currentRunLoop = [NSRunLoop currentRunLoop];
+            NSLog(@"currentRunLoop is %@",currentRunLoop);
         }
         
     }

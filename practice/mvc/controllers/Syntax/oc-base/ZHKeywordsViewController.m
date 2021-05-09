@@ -31,6 +31,19 @@ static int clickCount = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    id array1 = [[NSArray alloc]init];//不可变
+    id m_array1 = [[NSMutableArray alloc]init];//可变
+    
+    id array2 = [array1 copy];//不可变，浅拷贝
+    id array3 = [array1 mutableCopy];//可变，深拷贝
+    
+    id m_array2 = [m_array1 copy];//不可变，深拷贝
+    id m_array3 = [m_array1 mutableCopy];//可变，深拷贝
+    
+    //还有局部深拷贝，这个数组深拷贝了，但是数组中的变量没有深拷贝，可以在调用muticopy的时候 copyItems
+    
+    NSLog(@"%@;%@;%@;%@;%@;%@",array1,m_array1,array2,m_array2,array3,m_array3);
     self.title = @"关键字总结";
     NSString* load = @"load方法在main函数之前执行，父类-子类-分类的方法执行 +[BaseModel load]\n+[Test2Model load]\n+[ZHKeywordsModel load]\n+[BaseModel(Practise) load]\n+[BaseModel(Test) load]\n+[Test2Model(Test2) load]\n+[ZHKeywordsModel(Test) load]\n+[Test2Model(Test) load]\n";
     NSString* lazy = @"\n1、+[BaseModel(Test) initialize]\n2、 +[ZHKeywordsModel(Test) initialize]\n3、+[TestModel initialize]";
@@ -89,6 +102,9 @@ static int clickCount = 1;
     [Test2Model new];
     
     [self testCopy];
+    
+    id baseModel = [BaseModel new];
+    [baseModel testCopy];
 }
 -(void)display{
     self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayAction)];
